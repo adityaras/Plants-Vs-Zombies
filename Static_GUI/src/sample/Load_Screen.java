@@ -12,14 +12,9 @@ import java.io.IOException;
 
 public class Load_Screen implements Runnable{
     private Parent screen;
-    private Stage primary_stage;
     @Override
     public void run() {
     screen=showLoadScreen();
-    }
-    public void set_stage( Stage my_stage)
-    {
-        this.primary_stage=my_stage;
     }
 
     public Parent getScreen() {
@@ -41,21 +36,12 @@ public class Load_Screen implements Runnable{
             fadeIn.setToValue(1);
             fadeIn.setCycleCount(1);
             fadeIn.play();
-
             fadeIn.setOnFinished((e) -> {
-                System.out.println("Ya1y");
-                Main_Menu_Screen mm =new Main_Menu_Screen();
-                System.out.println("Ya2y");
-                Thread Main_menu_screen = new Thread(mm);
-                System.out.println("Ya3y");
-                //mm.set_stage(primary_stage);
-                Main_menu_screen.start();
-                System.out.println("Ya4y");
-                Game_GUI.primary_stage.setScene(new Scene(mm.showMain_Menu_Screen(),600 ,400));
-                System.out.println("Ya5y");
+                Login login =new Login();
+                Thread logth = new Thread(login);
+                logth.start();
+                Game_GUI.primary_stage.setScene(new Scene(login.showLogin()));
                 Game_GUI.primary_stage.show();
-                System.out.println("Ya6y");
-
             });
             return Load_Sceen;
         } catch (IOException  err) {

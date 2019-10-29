@@ -4,12 +4,18 @@ import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 
 public class Main_Menu_Screen implements Runnable{
     private Parent screen;
-    public Stage primary_stage;
-
+    public static Stage Main_Game;
+    Main_Menu_Screen()
+    {
+        Main_Menu_Screen.Main_Game.initStyle(StageStyle.UNIFIED);
+        Main_Menu_Screen.Main_Game.setTitle("Plants Vs Zombies");
+    }
 
     @Override
     public void run() {
@@ -19,10 +25,6 @@ public class Main_Menu_Screen implements Runnable{
     public Parent getScreen() {
         return screen;
     }
-    public void set_stage( Stage my_stage)
-    {
-        this.primary_stage=my_stage;
-    }
     public Parent showMain_Menu_Screen()
     {
 
@@ -30,7 +32,7 @@ public class Main_Menu_Screen implements Runnable{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Game_GUI.class.getResource("Main_Menu_Screen.fxml"));
-            StackPane Main_Menu_Screen =  fxmlLoader.load();
+            Pane Main_Menu_Screen =  fxmlLoader.load();
             return Main_Menu_Screen;
         } catch (IOException  err) {
             System.out.println();
