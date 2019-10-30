@@ -12,6 +12,10 @@ public class Main_Menu_Screen implements Runnable{
     private Parent screen;
     public static Stage Main_Game;
 
+    public Main_Menu_Screen(){
+        Main_Game=new Stage();
+    }
+
     @Override
     public void run() {
         screen=showMain_Menu_Screen();
