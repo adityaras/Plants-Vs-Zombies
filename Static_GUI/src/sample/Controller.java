@@ -12,9 +12,11 @@ public class Controller {
         Main_Menu_Screen mm = new Main_Menu_Screen();
         Thread Main_Menu = new Thread(mm);
         Main_Menu.start();
-        Game_GUI.primary_stage.close();
+
+        Main_Menu_Screen.Main_Game.setTitle("Plants Vs Zombies");
         Main_Menu_Screen.Main_Game.setScene(new Scene(mm.showMain_Menu_Screen()));
         Main_Menu_Screen.Main_Game.show();
+        Game_GUI.primary_stage.close();
 
     }
 

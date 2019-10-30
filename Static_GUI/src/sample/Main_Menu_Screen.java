@@ -11,11 +11,6 @@ import java.io.IOException;
 public class Main_Menu_Screen implements Runnable{
     private Parent screen;
     public static Stage Main_Game;
-    Main_Menu_Screen()
-    {
-        Main_Menu_Screen.Main_Game.initStyle(StageStyle.UNIFIED);
-        Main_Menu_Screen.Main_Game.setTitle("Plants Vs Zombies");
-    }
 
     @Override
     public void run() {
