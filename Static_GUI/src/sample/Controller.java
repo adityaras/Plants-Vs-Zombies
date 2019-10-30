@@ -2,21 +2,102 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
 
 
 public class Controller {
-    @FXML
-    public void login_enter_username()
-    {
-        Main_Menu_Screen mm = new Main_Menu_Screen();
-        Thread Main_Menu = new Thread(mm);
-        Main_Menu.start();
+    public ImageView Play;
+    public ImageView Load;
+    public ImageView Exit;
+    public ImageView Settings;
+    public ImageView Ranking;
+    Image play = new Image("sample/Plants vs Zombies Assets/Actual Button.png");
+    Image load = new Image("sample/Plants vs Zombies Assets/load button.png");
+    Image exit = new Image("sample/Plants vs Zombies Assets/Exit button.png");
+    Image Setting = new Image("sample/Plants vs Zombies Assets/Settings button.png");
+    Image ranking = new Image("sample/Plants vs Zombies Assets/Ranking BG.png");
+    Image playpressed = new Image("sample/Plants vs Zombies Assets/Actual Button_Pressed.png");
+    Image loadpressed = new Image("sample/Plants vs Zombies Assets/load button_pressed.png");
+    Image exitpressed = new Image("sample/Plants vs Zombies Assets/Exit button_pressed.png");
+    Image Settingpressed = new Image("sample/Plants vs Zombies Assets/Settings button_pressed.png");
+    Image Rankingpressed = new Image("sample/Plants vs Zombies Assets/Ranking BG_pressed.png");
 
-        Main_Menu_Screen.Main_Game.setTitle("Plants Vs Zombies");
-        Main_Menu_Screen.Main_Game.setScene(new Scene(mm.showMain_Menu_Screen()));
-        Main_Menu_Screen.Main_Game.show();
-        Game_GUI.primary_stage.close();
+    @FXML
+    public void playentered()
+    {
+        Play.setImage(playpressed);
+    }
+    @FXML
+    public void playexited()
+    {
+        Play.setImage(play);
+    }
+    @FXML
+    public void loadentered()
+    {
+        Load.setImage(loadpressed);
+    }
+    @FXML
+    public void loadexited()
+    {
+        Load.setImage(load);
+    }
+    @FXML
+    public void settingentered()
+    {
+        Settings.setImage(Settingpressed);
+    }
+    @FXML
+    public void settingexited()
+    {
+        Settings.setImage(Setting);
+    }
+    @FXML
+    public void rankingentered()
+    {
+        Ranking.setImage(Rankingpressed);
+    }
+    @FXML
+    public void rankingexited()
+    {
+        Ranking.setImage(ranking);
+    }
+    @FXML
+    public void exitentered()
+    {
+        Exit.setImage(exitpressed);
+    }
+    @FXML
+    public void exitexited()
+    {
+        Exit.setImage(exit);
+    }
+
+    @FXML
+    public void playgame()
+    {
+
+    }
+    @FXML
+    public void savegame()
+    {
+
+    }
+    @FXML
+    public void leaderboard()
+    {
+
+    }
+    @FXML
+    public void settings()
+    {
+
+    }
+    @FXML
+    public void exit()
+    {
 
     }
 

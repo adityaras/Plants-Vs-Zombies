@@ -4,16 +4,36 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <ImageView fitHeight="584.0" fitWidth="819.0" layoutX="-8.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Plants%20vs%20Zombies%20Assets/BG_Main_Menu_wo_buttons.png" />
+            <Image url="@Plants%20vs%20Zombies%20Assets/BG_Main_Menu_wo_buttons.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="63.0" fitWidth="306.0" layoutX="505.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Play" fitHeight="63.0" fitWidth="306.0" layoutX="505.0" layoutY="34.0" onMouseClicked="#playgame" onMouseEntered="#playentered" onMouseExited="#playexited" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
+            <Image url="@Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Load" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="127.0" onMouseClicked="#savegame" onMouseEntered="#loadentered" onMouseExited="#loadexited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/load%20button.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Exit" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="377.0" onMouseClicked="#exit" onMouseEntered="#exitentered" onMouseExited="#exitexited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Exit%20button.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Settings" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="294.0" onMouseDragged="#settings" onMouseEntered="#settingentered" onMouseExited="#settingexited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Settings%20button.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Ranking" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="215.0" onMouseClicked="#leaderboard" onMouseEntered="#rankingentered" onMouseExited="#rankingexited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Ranking%20BG.png" />
          </image>
       </ImageView>
    </children>

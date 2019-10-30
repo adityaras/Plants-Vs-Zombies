@@ -13,7 +13,7 @@ public class Main_Menu_Screen implements Runnable{
     public static Stage Main_Game;
 
     public Main_Menu_Screen(){
-        Main_Game=new Stage();
+        Main_Game=new Stage(StageStyle.UNIFIED);
     }
 
     @Override
@@ -29,12 +29,13 @@ public class Main_Menu_Screen implements Runnable{
 
 
         try {
+
             FXMLLoader fxmlLoader = new FXMLLoader();
+
             fxmlLoader.setLocation(Game_GUI.class.getResource("Main_Menu_Screen.fxml"));
-            Pane Main_Menu_Screen =  fxmlLoader.load();
-            return Main_Menu_Screen;
+            return (Pane) fxmlLoader.load();
         } catch (IOException  err) {
-            System.out.println();
+            System.out.println("Main_Menu_Object_Not_Created");
             err.printStackTrace();
             return null;
         }
