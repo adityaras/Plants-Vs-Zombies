@@ -16,5 +16,25 @@
             <Image url="@../../Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="306.0" layoutX="505.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="306.0" layoutX="505.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="306.0" layoutX="513.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="306.0" layoutX="513.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
