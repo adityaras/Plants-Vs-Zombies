@@ -9,7 +9,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class Main_Menu_Screen implements Runnable{
-    private Parent screen;
+    private static Parent screen;
     public static Stage Main_Game;
 
     public Main_Menu_Screen(){

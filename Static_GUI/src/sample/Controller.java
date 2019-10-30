@@ -1,10 +1,15 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import java.io.IOException;
 
 
 public class Controller {
@@ -96,9 +101,15 @@ public class Controller {
 
     }
     @FXML
-    public void exit()
-    {
-
+    public void exit() throws IOException {
+        Stage Exit_Stage;
+        Exit_Stage = new Stage(StageStyle.TRANSPARENT);
+        Exit_Stage.setTitle("Exit Prompt");
+        FXMLLoader fxmlloader =  new FXMLLoader();
+        fxmlloader.setLocation(Game_GUI.class.getResource("Exit.fxml"));
+        Pane Exit_Pane = (Pane) fxmlloader.load();
+        Exit_Stage.setScene(new Scene(Exit_Pane, Color.TRANSPARENT));
+        Exit_Stage.showAndWait();
     }
 
 
