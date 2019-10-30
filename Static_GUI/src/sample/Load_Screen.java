@@ -40,7 +40,7 @@ public class Load_Screen implements Runnable{
                 Login login =new Login();
                 Thread logth = new Thread(login);
                 logth.start();
-                Game_GUI.primary_stage.setScene(new Scene(login.showLogin()));
+                Game_GUI.primary_stage.setScene(new Scene(login.showLogin(),550,400));
                 Game_GUI.primary_stage.show();
             });
             return Load_Sceen;

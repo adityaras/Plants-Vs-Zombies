@@ -31,7 +31,7 @@ public class Login implements Runnable{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Game_GUI.class.getResource("Login.fxml"));
-            Pane Login = (Pane) fxmlLoader.load();
+            Pane Login = fxmlLoader.load();
             return Login;
         } catch (IOException  err) {
             err.printStackTrace();
