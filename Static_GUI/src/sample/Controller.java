@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -13,6 +14,7 @@ import java.io.IOException;
 
 
 public class Controller {
+    public static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);;
     public ImageView Play;
     public ImageView Load;
     public ImageView Exit;
@@ -102,12 +104,13 @@ public class Controller {
     }
     @FXML
     public void exit() throws IOException {
-        Stage Exit_Stage;
-        Exit_Stage = new Stage(StageStyle.TRANSPARENT);
+
+
         Exit_Stage.setTitle("Exit Prompt");
+
         FXMLLoader fxmlloader =  new FXMLLoader();
         fxmlloader.setLocation(Game_GUI.class.getResource("Exit.fxml"));
-        Pane Exit_Pane = (Pane) fxmlloader.load();
+        AnchorPane Exit_Pane = (AnchorPane) fxmlloader.load();
         Exit_Stage.setScene(new Scene(Exit_Pane, Color.TRANSPARENT));
         Exit_Stage.showAndWait();
     }

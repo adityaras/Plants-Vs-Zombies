@@ -13,7 +13,7 @@ public class Exit_Controller {
 
     Image ok = new Image("sample/Plants vs Zombies Assets/Exit_screen_ok_normal.png");
     Image cross = new Image("sample/Plants vs Zombies Assets/exitscreen_cross_normal.png");
-    Image okpressed = new Image("sample/Plants vs Zombies Assets/exitscreen_ok.png");
+    Image okpressed = new Image("sample/Plants vs Zombies Assets/Exit_screen_ok.png");
     Image crosspressed = new Image("sample/Plants vs Zombies Assets/exitscreen_cross.png");
 
 
@@ -41,7 +41,7 @@ public class Exit_Controller {
     @FXML
     public void playgoback()
     {
-
+        Controller.Exit_Stage.close();
     }
     @FXML
     public void exit()
