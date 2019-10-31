@@ -41,6 +41,7 @@ public class Exit_Controller {
     @FXML
     public void playgoback()
     {
+        Main_Menu_Screen.Main_Game.setOpacity(1);
         Controller.Exit_Stage.close();
     }
     @FXML

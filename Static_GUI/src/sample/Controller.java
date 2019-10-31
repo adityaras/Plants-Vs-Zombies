@@ -14,7 +14,8 @@ import java.io.IOException;
 
 
 public class Controller {
-    public static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);;
+    public static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);
+    public static  Stage Ranking_Stage = new Stage(StageStyle.TRANSPARENT);
     public ImageView Play;
     public ImageView Load;
     public ImageView Exit;
@@ -93,9 +94,14 @@ public class Controller {
 
     }
     @FXML
-    public void leaderboard()
-    {
-
+    public void leaderboard() throws IOException {
+        Main_Menu_Screen.Main_Game.setOpacity(0.5);
+        Ranking_Stage.setTitle("Top 3 Rankers");
+        FXMLLoader fxmlloader =  new FXMLLoader();
+        fxmlloader.setLocation(Game_GUI.class.getResource("Rankings.fxml"));
+        Pane leaderboard = (Pane) fxmlloader.load();
+        Ranking_Stage.setScene(new Scene(leaderboard, Color.TRANSPARENT));
+        Ranking_Stage.showAndWait();
     }
     @FXML
     public void settings()
@@ -104,10 +110,8 @@ public class Controller {
     }
     @FXML
     public void exit() throws IOException {
-
-
+        Main_Menu_Screen.Main_Game.setOpacity(0.5);
         Exit_Stage.setTitle("Exit Prompt");
-
         FXMLLoader fxmlloader =  new FXMLLoader();
         fxmlloader.setLocation(Game_GUI.class.getResource("Exit.fxml"));
         AnchorPane Exit_Pane = (AnchorPane) fxmlloader.load();

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="pane_exit" stylesheets="@buttons.css" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Rankings_Controller">
+   <children>
+      <ImageView fitHeight="365.0" fitWidth="545.0" layoutX="28.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/rankings%20with%20text@2x.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="GoBack" fitHeight="150.0" fitWidth="200.0" layoutX="211.0" layoutY="315.0" onMouseClicked="#goback" onMouseEntered="#gobackentered" onMouseExited="#gobackexited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Go%20back%20button@2x.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
