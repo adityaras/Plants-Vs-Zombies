@@ -16,6 +16,7 @@ import java.io.IOException;
 public class Controller {
     public static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);
     public static  Stage Ranking_Stage = new Stage(StageStyle.TRANSPARENT);
+    public static Stage Settings_Stage = new Stage(StageStyle.TRANSPARENT);
     public ImageView Play;
     public ImageView Load;
     public ImageView Exit;
@@ -104,9 +105,14 @@ public class Controller {
         Ranking_Stage.showAndWait();
     }
     @FXML
-    public void settings()
-    {
-
+    public void settings() throws IOException {
+        Main_Menu_Screen.Main_Game.setOpacity(0.5);
+        Settings_Stage.setTitle("Settings Menu");
+        FXMLLoader fxmlloader =  new FXMLLoader();
+        fxmlloader.setLocation(Game_GUI.class.getResource("Settings.fxml"));
+        Pane settings_screen = (Pane) fxmlloader.load();
+        Settings_Stage.setScene(new Scene(settings_screen, Color.TRANSPARENT));
+        Settings_Stage.showAndWait();
     }
     @FXML
     public void exit() throws IOException {

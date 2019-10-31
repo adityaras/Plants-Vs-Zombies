@@ -16,7 +16,7 @@
             <DropShadow color="#fd7d0d" height="42.45" radius="14.765" spread="0.3" width="18.61" />
          </effect>
       </ImageView>
-      <ImageView fx:id="goback" fitHeight="59.0" fitWidth="59.0" layoutX="293.0" onMouseClicked="#playgoback" onMouseEntered="#crossentered" onMouseExited="#crossexited" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="goback" fitHeight="59.0" fitWidth="59.0" layoutX="293.0" onMouseClicked="#play_cross" onMouseEntered="#crossentered" onMouseExited="#crossexited" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Plants%20vs%20Zombies%20Assets/exitscreen_cross_normal.png" />
          </image>

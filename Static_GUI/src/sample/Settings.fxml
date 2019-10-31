@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="pane_exit" stylesheets="@buttons.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Settings_Controller">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="438.0" layoutX="122.0" layoutY="-22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Settings%20menu%20wo%20buttons@3x.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="instructions" fitHeight="46.0" fitWidth="196.0" layoutX="202.0" layoutY="223.0" onMouseClicked="#instruction_clicked" onMouseEntered="#instruction_entered" onMouseExited="#instruction_exited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Instructions%20Button.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="credits" fitHeight="43.0" fitWidth="200.0" layoutX="200.0" layoutY="275.0" onMouseClicked="#credits_clicked" onMouseEntered="#credits_entered" onMouseExited="#credits_exited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Credits%20Button.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="go_back" fitHeight="43.0" fitWidth="200.0" layoutX="227.0" layoutY="327.0" onMouseClicked="#play_go_back" onMouseEntered="#go_back_entered" onMouseExited="#go_back_exited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Go%20back%20button@3x.png" />
+         </image>
+      </ImageView>
+      <Slider layoutX="201.0" layoutY="139.0" prefHeight="29.0" prefWidth="212.0" />
+      <Slider layoutX="202.0" layoutY="192.0" prefHeight="29.0" prefWidth="212.0" />
+   </children>
+</Pane>

@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <ImageView fitHeight="584.0" fitWidth="819.0" layoutX="-8.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -26,7 +26,7 @@
             <Image url="@Plants%20vs%20Zombies%20Assets/Exit%20button.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Settings" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="294.0" onMouseDragged="#settings" onMouseEntered="#settingentered" onMouseExited="#settingexited" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Settings" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="294.0" onMouseClicked="#settings" onMouseEntered="#settingentered" onMouseExited="#settingexited" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Plants%20vs%20Zombies%20Assets/Settings%20button.png" />
          </image>

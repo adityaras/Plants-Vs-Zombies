@@ -13,7 +13,7 @@ public class Main_Menu_Screen implements Runnable{
     public static Stage Main_Game;
 
     public Main_Menu_Screen(){
-        Main_Game=new Stage();
+        Main_Game=new Stage(StageStyle.UNDECORATED);
     }
 
     @Override
@@ -32,6 +32,7 @@ public class Main_Menu_Screen implements Runnable{
 
             fxmlLoader.setLocation(Game_GUI.class.getResource("Main_Menu_Screen.fxml"));
             return (Pane) fxmlLoader.load();
+
         } catch (IOException  err) {
             System.out.println("Main_Menu_Object_Not_Created");
             err.printStackTrace();
