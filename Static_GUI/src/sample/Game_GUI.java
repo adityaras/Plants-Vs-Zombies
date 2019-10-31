@@ -14,15 +14,14 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class Game_GUI extends Application {
-    public static Stage primary_stage;
+    public static Stage primary_stage=new Stage(StageStyle.TRANSPARENT);
     @Override
     public void start(Stage primary_stage){
-        primary_stage.initStyle(StageStyle.TRANSPARENT);
-        primary_stage.setTitle("Plants Vs. Zombies");
-        primary_stage.setScene(new Scene(showPreLoadScreen(),600,337, Color.TRANSPARENT));
-        Game_GUI.primary_stage = primary_stage;
+        Game_GUI.primary_stage.setTitle("Plants Vs. Zombies");
+        Game_GUI.primary_stage.setScene(new Scene(showPreLoadScreen(),600,337, Color.TRANSPARENT));
         Game_GUI.primary_stage.show();
         Platform.setImplicitExit(false);
+
     }
     public Parent showPreLoadScreen()
     {

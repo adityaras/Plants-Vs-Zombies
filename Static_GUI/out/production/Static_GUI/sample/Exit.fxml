@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Exit_Controller">
+   <children>
+      <ImageView fitHeight="285.0" fitWidth="356.0" layoutX="-4.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Exitscreen.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="goback" fitHeight="59.0" fitWidth="59.0" layoutX="293.0" onMouseClicked="#playgoback" onMouseEntered="#crossentered" onMouseExited="#crossexited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/exitscreen_cross_normal.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="OK" fitHeight="61.0" fitWidth="181.0" layoutX="81.0" layoutY="193.0" onMouseClicked="#exit" onMouseEntered="#okenetered" onMouseExited="#playexited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Exit_screen_ok_normal.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

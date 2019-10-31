@@ -1,69 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/1200px-Electronic-Arts-Logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/1200px-Electronic-Arts-Logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/1200px-Electronic-Arts-Logo.svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/1200px-Electronic-Arts-Logo_v2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/1200px-Electronic-Arts-Logo_v3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Actual Button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Actual Button.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Actual Button@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Actual Button@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/BG_Main_Menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/BG_Main_Menu_wo_buttons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Entanglementpic_web_600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Exit button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Exit button.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Exit button@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Exit button@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/First_Screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Login Screen V2.dwg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Login Screen V2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Login Screen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Plans_ver_zambis.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Ranking BG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Ranking BG.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Ranking BG@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Ranking BG@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Settings button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Settings button.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Settings button@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Settings button@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Title_text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/Untitled-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/button-normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/d273ap2-ed960cab-c496-483e-ab03-532c9caaa2f3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/d2zrvmp-f354cc75-6eb6-48b0-b170-ff3cd305b840.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/d383w9h-3fa7678e-5509-414f-b04a-ebf9add0a223.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/d39xz65-b5cabd28-279e-4aa1-bb8e-7cd220f4068b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/d3jvwn2-9d45a46b-68cb-4343-895b-6c261e93c69b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/d7eg7jn-b80f1df6-cd86-439e-bd4c-dbb512b5e888.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/d7o5bya-db1f479e-fb65-417f-b3e8-eb40bd444fde.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/game_menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/happy_valentine_s_day_pvz_by_adventaim_d2jn1g8-fullview.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/load button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/load button.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/load button@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/load button@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/old-west-empty-signboards-wood-260nw-627181595.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/pngtree-wood-rope-ladder-decoration-illustration-image_1386952.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/punny_sunny___plants_vs_zombies___1_by_nestly_d66051b-fullview.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/rope_menu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/title_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants vs Zombies Assets/wooden-banner-sign-posts-boards-260nw-1461491681.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Static_GUI/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Static_GUI/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Static_GUI/sample/Main_Menu_Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Static_GUI/sample/Main_Menu_Screen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Load_Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Load_Screen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Pre_Load_Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pre_Load_Screen.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +94,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -276,6 +215,7 @@
       <workItem from="1572441664686" duration="2755000" />
       <workItem from="1572453217858" duration="5539000" />
       <workItem from="1572462110299" duration="554000" />
+      <workItem from="1572510058426" duration="336000" />
     </task>
     <servers />
   </component>
