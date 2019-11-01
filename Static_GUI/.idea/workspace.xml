@@ -14,6 +14,8 @@
       <change beforePath="$PROJECT_DIR$/src/sample/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main_Menu_Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Rankings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Rankings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Settings.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
