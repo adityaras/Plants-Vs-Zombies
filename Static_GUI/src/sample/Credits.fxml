@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="372.0" styleClass="pane_exit" stylesheets="@buttons.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Credits_Controller">
+   <children>
+      <ImageView fitHeight="407.0" fitWidth="362.0" layoutX="5.0" layoutY="-73.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Credits%20Screen.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="go_back" fitHeight="40.0" fitWidth="136.0" layoutX="118.0" layoutY="256.0" onMouseClicked="#play_go_back" onMouseEntered="#go_back_entered" onMouseExited="#go_back_exited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Go%20back%20button@2x.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
