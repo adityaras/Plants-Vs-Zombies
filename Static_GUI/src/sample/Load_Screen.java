@@ -9,12 +9,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class Load_Screen implements Runnable{
+public class Load_Screen {
     private Parent screen;
-    @Override
-    public void run() {
-    screen=showLoadScreen();
-    }
 
     public Parent getScreen() {
         return screen;
@@ -24,7 +20,6 @@ public class Load_Screen implements Runnable{
     {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-
             fxmlLoader.setLocation(Game_GUI.class.getResource("Load_Screen.fxml"));
             StackPane Load_Sceen = (StackPane) fxmlLoader.load();
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), Load_Sceen);
@@ -34,8 +29,6 @@ public class Load_Screen implements Runnable{
             fadeIn.play();
             fadeIn.setOnFinished((e) -> {
                 Login login =new Login();
-                Thread logth = new Thread(login);
-                logth.start();
                 Game_GUI.primary_stage.setScene(new Scene(login.showLogin(),550,400));
                 Game_GUI.primary_stage.show();
             });

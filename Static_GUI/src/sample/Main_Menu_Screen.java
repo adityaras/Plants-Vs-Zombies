@@ -8,29 +8,20 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class Main_Menu_Screen implements Runnable{
+public class Main_Menu_Screen{
     private static Parent screen;
     static Stage Main_Game;
-
     Main_Menu_Screen(){
         Main_Game=new Stage(StageStyle.UNDECORATED);
     }
-
-    @Override
-    public void run() {
-        screen=showMain_Menu_Screen();
-    }
-
     public Parent getScreen() {
         return screen;
     }
-
     Parent showMain_Menu_Screen()
     {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-
             fxmlLoader.setLocation(Game_GUI.class.getResource("Main_Menu_Screen.fxml"));
             return (Pane) fxmlLoader.load();
 

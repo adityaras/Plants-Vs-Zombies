@@ -6,16 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.IOException;
 
 public class Game_GUI extends Application {
 
-    static Stage primary_stage=new Stage(StageStyle.TRANSPARENT);
+    public static Stage primary_stage=new Stage(StageStyle.TRANSPARENT);
 
     @Override
     public void start(Stage primary_stage){
@@ -24,12 +26,14 @@ public class Game_GUI extends Application {
         Game_GUI.primary_stage.show();
         Platform.setImplicitExit(false);
 
+
     }
 
     private Parent showPreLoadScreen()
     {
 
         try {
+
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Game_GUI.class.getResource("Pre_Load_Screen.fxml"));
             StackPane Pre_Load_Screen = (StackPane) fxmlLoader.load();
@@ -47,9 +51,6 @@ public class Game_GUI extends Application {
             });
             fadeOut.setOnFinished((e) -> {
                 Load_Screen l =new Load_Screen();
-                Thread load_screen = new Thread(l);
-                load_screen.start();
-                load_screen.run();
                 Game_GUI.primary_stage.setScene(new Scene(l.showLoadScreen(),550,400));
                 Game_GUI.primary_stage.show();
             });
