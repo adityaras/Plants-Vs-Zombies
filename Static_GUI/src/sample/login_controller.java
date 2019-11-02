@@ -8,8 +8,6 @@ public class login_controller {
     public void login_enter_username()
     {
         Main_Menu_Screen mm = new Main_Menu_Screen();
-        Thread Main_Menu = new Thread(mm);
-        Main_Menu.start();
         Main_Menu_Screen.Main_Game.setTitle("Plants Vs Zombies");
         Scene screen=new Scene(mm.showMain_Menu_Screen());
         Main_Menu_Screen.Main_Game.setScene(screen);

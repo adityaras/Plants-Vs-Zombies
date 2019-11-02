@@ -11,24 +11,13 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class Login implements Runnable{
+public class Login{
     private Parent screen;
-    @Override
-    public void run() {
-        screen=showLogin();
-    }
-
-
     public Parent getScreen() {
         return screen;
     }
-
-
     public Parent showLogin()
-    {
-
-
-        try {
+    {try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Game_GUI.class.getResource("Login.fxml"));
             Pane Login = fxmlLoader.load();
