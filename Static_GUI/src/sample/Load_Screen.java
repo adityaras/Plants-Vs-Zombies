@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -21,11 +20,8 @@ public class Load_Screen implements Runnable{
         return screen;
     }
 
-
-    public Parent showLoadScreen()
+    Parent showLoadScreen()
     {
-
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
 
@@ -44,7 +40,8 @@ public class Load_Screen implements Runnable{
                 Game_GUI.primary_stage.show();
             });
             return Load_Sceen;
-        } catch (IOException  err) {
+        }
+        catch (IOException  err) {
             err.printStackTrace();
             return null;
         }

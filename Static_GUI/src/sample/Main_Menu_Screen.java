@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class Main_Menu_Screen implements Runnable{
     private static Parent screen;
-    public static Stage Main_Game;
+    static Stage Main_Game;
 
-    public Main_Menu_Screen(){
+    Main_Menu_Screen(){
         Main_Game=new Stage(StageStyle.UNDECORATED);
     }
 
@@ -24,7 +24,8 @@ public class Main_Menu_Screen implements Runnable{
     public Parent getScreen() {
         return screen;
     }
-    public Parent showMain_Menu_Screen()
+
+    Parent showMain_Menu_Screen()
     {
         try {
 

@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -9,32 +10,35 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class Controller {
-    public static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);
-    public static  Stage Ranking_Stage = new Stage(StageStyle.TRANSPARENT);
-    public static Stage Settings_Stage = new Stage(StageStyle.TRANSPARENT);
-    public static Stage Game_Play_Stage = new Stage(StageStyle.TRANSPARENT);
+public class Controller implements Initializable {
+    static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);
+    static  Stage Ranking_Stage = new Stage(StageStyle.TRANSPARENT);
+    static Stage Settings_Stage = new Stage(StageStyle.TRANSPARENT);
+    private static Stage Game_Play_Stage = new Stage(StageStyle.TRANSPARENT);
     public ImageView Play;
     public ImageView Load;
     public ImageView Exit;
     public ImageView Settings;
     public ImageView Ranking;
-    Image play = new Image("sample/Plants vs Zombies Assets/Actual Button.png");
-    Image load = new Image("sample/Plants vs Zombies Assets/load button.png");
-    Image exit = new Image("sample/Plants vs Zombies Assets/Exit button.png");
-    Image Setting = new Image("sample/Plants vs Zombies Assets/Settings button.png");
-    Image ranking = new Image("sample/Plants vs Zombies Assets/Ranking BG.png");
-    Image playpressed = new Image("sample/Plants vs Zombies Assets/Actual Button_Pressed.png");
-    Image loadpressed = new Image("sample/Plants vs Zombies Assets/load button_pressed.png");
-    Image exitpressed = new Image("sample/Plants vs Zombies Assets/Exit button_pressed.png");
-    Image Settingpressed = new Image("sample/Plants vs Zombies Assets/Settings button_pressed.png");
-    Image Rankingpressed = new Image("sample/Plants vs Zombies Assets/Ranking BG_pressed.png");
+    private Image play = new Image("sample/Plants vs Zombies Assets/Actual Button.png");
+    private Image load = new Image("sample/Plants vs Zombies Assets/load button.png");
+    private Image exit = new Image("sample/Plants vs Zombies Assets/Exit button.png");
+    private Image Setting = new Image("sample/Plants vs Zombies Assets/Settings button.png");
+    private Image ranking = new Image("sample/Plants vs Zombies Assets/Ranking BG.png");
+    private Image playpressed = new Image("sample/Plants vs Zombies Assets/Actual Button_Pressed.png");
+    private Image loadpressed = new Image("sample/Plants vs Zombies Assets/load button_pressed.png");
+    private Image exitpressed = new Image("sample/Plants vs Zombies Assets/Exit button_pressed.png");
+    private Image Settingpressed = new Image("sample/Plants vs Zombies Assets/Settings button_pressed.png");
+    private Image Rankingpressed = new Image("sample/Plants vs Zombies Assets/Ranking BG_pressed.png");
+
 
     @FXML
     public void playentered()
@@ -116,6 +120,8 @@ public class Controller {
     @FXML
     public void settings() throws IOException {
         Main_Menu_Screen.Main_Game.setOpacity(0.5);
+
+
         Settings_Stage.setTitle("Settings Menu");
         FXMLLoader fxmlloader =  new FXMLLoader();
         fxmlloader.setLocation(Game_GUI.class.getResource("Settings.fxml"));
@@ -135,4 +141,15 @@ public class Controller {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Settings_Stage.initOwner(Main_Menu_Screen.Main_Game);
+        Settings_Stage.initModality(Modality.WINDOW_MODAL);
+        Exit_Stage.initOwner(Main_Menu_Screen.Main_Game);
+        Exit_Stage.initModality(Modality.WINDOW_MODAL);
+        Ranking_Stage.initOwner(Main_Menu_Screen.Main_Game);
+        Ranking_Stage.initModality(Modality.WINDOW_MODAL);
+        Game_Play_Stage.initOwner(Main_Menu_Screen.Main_Game);
+        Game_Play_Stage.initModality(Modality.WINDOW_MODAL);
+    }
 }

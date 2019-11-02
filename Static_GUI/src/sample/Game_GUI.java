@@ -14,7 +14,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class Game_GUI extends Application {
-    public static Stage primary_stage=new Stage(StageStyle.TRANSPARENT);
+
+    static Stage primary_stage=new Stage(StageStyle.TRANSPARENT);
+
     @Override
     public void start(Stage primary_stage){
         Game_GUI.primary_stage.setTitle("Plants Vs. Zombies");
@@ -23,7 +25,8 @@ public class Game_GUI extends Application {
         Platform.setImplicitExit(false);
 
     }
-    public Parent showPreLoadScreen()
+
+    private Parent showPreLoadScreen()
     {
 
         try {
@@ -52,7 +55,8 @@ public class Game_GUI extends Application {
             });
 
             return Pre_Load_Screen;
-        } catch (IOException err) {
+        }
+        catch (IOException err) {
             err.printStackTrace();
             return null;
         }
