@@ -1,26 +1,38 @@
 package sample;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-
+import javafx.animation.*;
+import javafx.scene.shape.Line;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+
 public class Main_Gameplay_Controller implements Initializable {
     private int Selector;
+
+    @FXML
+    suntoken
+
+    @FXML
+    Line lane1;
+    @FXML
+    Line lane2;
+    @FXML
+    Line lane3;
+    @FXML
+    Line lane4;
+    @FXML
+    Line lane5;
 
     @FXML
     public ImageView Sunflower_Seed;
@@ -31,12 +43,12 @@ public class Main_Gameplay_Controller implements Initializable {
     @FXML
     public ScrollPane scrollpane_GamePlay ;
     private boolean flag=true;
-    public ImageView Bullet_Holder;
-    Timeline scroll_pane = new Timeline();
-    Timeline scroll_pane_reset = new Timeline();
+    private ImageView Bullet_Holder;
+    private Timeline scroll_pane = new Timeline();
+    private Timeline scroll_pane_reset = new Timeline();
 
 
-    Image Pea_Bullet=new Image("sample/Plants vs Zombies Assets/ProjectilePea.png");
+
     public void scroll_pane_to_show_zombies()
     { if(flag)
         {scroll_pane.play();
@@ -45,14 +57,19 @@ public class Main_Gameplay_Controller implements Initializable {
         flag=false;
         });}
     }
-    Image PeaShooterGIF = new Image("sample/Plants vs Zombies Assets/PeaShootera.gif");
-    Image SunflowerGIF = new Image("sample/Plants vs Zombies Assets/sun_flower.gif");
-    Image PeaShooter=new Image("sample/Plants vs Zombies Assets/PeashooterSeed.PNG.png");
-    Image PeaShooterSelected = new Image("sample/Plants vs Zombies Assets/PeaShooterSelected.gif");
-    Image SunFlower = new Image("sample/Plants vs Zombies Assets/SunflowerSeed.PNG.png");
-    Image SunFlowerSelected = new Image("sample/Plants vs Zombies Assets/SunflowerSelected.gif");
+    private Image PeaShooterGIF = new Image("sample/Plants vs Zombies Assets/PeaShootera.gif");
+    private Image SunflowerGIF = new Image("sample/Plants vs Zombies Assets/sun_flower.gif");
+    private Image PeaShooter=new Image("sample/Plants vs Zombies Assets/PeashooterSeed.PNG.png");
+    private Image PeaShooterSelected = new Image("sample/Plants vs Zombies Assets/PeaShooterSelected.gif");
+    private Image SunFlower = new Image("sample/Plants vs Zombies Assets/SunflowerSeed.PNG.png");
+    private Image SunFlowerSelected = new Image("sample/Plants vs Zombies Assets/SunflowerSelected.gif");
+    private Image Pea_Bullet=new Image("sample/Plants vs Zombies Assets/ProjectilePea.png");
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        Line[] My_lanes={lane1,lane2,lane3,lane4,lane5};
+
+
         scroll_pane.getKeyFrames().addAll(
                 new KeyFrame((new Duration(2000)), new KeyValue(scrollpane_GamePlay.hvalueProperty() ,0)),
                 new KeyFrame((new Duration(4000)), new KeyValue(scrollpane_GamePlay.hvalueProperty(),scrollpane_GamePlay.getHmax()))
@@ -70,35 +87,44 @@ public class Main_Gameplay_Controller implements Initializable {
 
                 Grid_Pane.add(Image_Holder, col, row);
 
-            Image_Holder.setOnMouseClicked((MouseEvent e1) -> {
+                final int frow=row;
+                final int fcol=col;
 
-                StackPane putter=(StackPane) e1.getSource();
-                if (Selector > 0 && Selector < 6 ) {
+                Image_Holder.setOnMouseClicked((MouseEvent e1) -> {
 
+                    StackPane putter=(StackPane) e1.getSource();
+                    if (Selector > 0 && Selector < 6 ) {
 
-                    ImageView Plant = new ImageView();
-                    Plant.setFitHeight(60);
-                    Plant.setFitWidth(50);
-                    if (Selector == 1 && !putter.getChildren().contains(Plant)) {
-                        Selector=0;
+                        ImageView Plant = new ImageView();
+                        Plant.setFitHeight(60);
+                        Plant.setFitWidth(50);
+                        if (Selector == 1 && !putter.getChildren().contains(Plant)) {
 
-                        Plant.setImage(PeaShooterGIF);
-                        PeaShooter_Seed.setImage(PeaShooter);
-                        //Bullet_Holder.setImage(Pea_Bullet);
-                        //Bullet_Holder.setVisible(false);
-                        /*putter.getChildren().add(Bullet_Holder);*/
-                        //Bullet.play();
-                        //Bullet_Holder.setVisible(true);
-                    } else if (Selector == 2 && !putter.getChildren().contains(Plant)) {
-                        Plant.setImage(SunflowerGIF);
-                        Selector=0;
-                        Sunflower_Seed.setImage(SunFlower);
-                    }
-                    putter.getChildren().addAll(Plant);
+                            Plant.setImage(PeaShooterGIF);
+                            PeaShooter_Seed.setImage(PeaShooter);
 
+                        } else if (Selector == 2 && !putter.getChildren().contains(Plant)) {
+                            Plant.setImage(SunflowerGIF);
+                            Sunflower_Seed.setImage(SunFlower);
+                        }
+                        Bullet_Holder=new ImageView();
+                        Bullet_Holder.setImage(Pea_Bullet);
+                        Bullet_Holder.setPreserveRatio(true);
+                        Bullet_Holder.setFitWidth(20);
+                        Bullet_Holder.setFitHeight(20);
+
+                        if(putter.getChildren().isEmpty() ) {
+                            putter.getChildren().addAll(Plant);
+                            Grid_Pane.add(Bullet_Holder, fcol, frow);
+                            if (Selector == 1) {
+                                System.out.println("pea is selected !!! row is " + frow + " col is " + fcol);
+                                shoot_pea(Bullet_Holder, My_lanes[frow]);
+                            }
+                            putter.toFront();
+                            Selector = 0;
+                        }
                 }
             });
-
         }
         }
     }
@@ -113,5 +139,14 @@ public class Main_Gameplay_Controller implements Initializable {
         Selector=2;
     }
 
+    private void shoot_pea(ImageView Bullet_Holder, Line myline){
+        System.out.println("Yup the function is called");
+        TranslateTransition pea_shot=new TranslateTransition();
+        pea_shot.setNode(Bullet_Holder);
+        pea_shot.setByX(1000);
+        pea_shot.setDuration(Duration.seconds(3));
+        pea_shot.setCycleCount(Timeline.INDEFINITE);
+        pea_shot.play();
 
+    }
 }
