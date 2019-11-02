@@ -13,6 +13,10 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javafx.scene.media.MediaPlayer;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
 import java.io.IOException;
 
 public class Game_GUI extends Application {
@@ -46,6 +50,7 @@ public class Game_GUI extends Application {
             fadeOut.setToValue(0);
             fadeOut.setCycleCount(1);
             fadeIn.play();
+            playSound();
             fadeIn.setOnFinished((e) -> {
                 fadeOut.play();
             });
@@ -60,6 +65,18 @@ public class Game_GUI extends Application {
         catch (IOException err) {
             err.printStackTrace();
             return null;
+        }
+    }
+    public void playSound() {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:/Users/adity/OneDrive/Desktop/Codes/Java/AP/PVZ_BANEA/AP-PROJECT/Static_GUI/src/sample/Plants vs Zombies Assets/BackGround.wav").getAbsoluteFile());
+            //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sample/Plants vs Zombies Assets/BackGround.wav").getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(Exception ex) {
+            System.out.println("Error In Sound File Location, Try giving full Path");
+            ex.printStackTrace();
         }
     }
     public static void main(String[] args) {
