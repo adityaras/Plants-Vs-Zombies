@@ -8,12 +8,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Main_Gameplay_Controller implements Initializable {
+    private int Selector;
+
+
+
     @FXML
     public ScrollPane scrollpane_GamePlay ;
     Timeline scroll_pane = new Timeline();
@@ -24,7 +30,10 @@ public class Main_Gameplay_Controller implements Initializable {
         scroll_pane_reset.play();
         });
     }
-
+    Image PeaShooter=new Image("sample/Plants vs Zombies Assets/PeashooterSeed.PNG.png");
+    Image PeaShooterSelected = new Image("sample/Plants vs Zombies Assets/PeaShooterSelected.gif");
+    Image SunFlower = new Image("sample/Plants vs Zombies Assets/SunflowerSeed.PNG.png");
+    Image SunFlowerSelected = new Image("sample/Plants vs Zombies Assets/SunflowerSelected.gif");
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         scroll_pane.getKeyFrames().addAll(
@@ -38,4 +47,6 @@ public class Main_Gameplay_Controller implements Initializable {
 
         );
     }
+
+
 }
