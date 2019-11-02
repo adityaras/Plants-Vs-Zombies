@@ -17,7 +17,7 @@
                   <Image url="@Plants%20vs%20Zombies%20Assets/Plans_ver_zambis.jpg" />
                </image>
             </ImageView>
-            <GridPane layoutX="253.0" layoutY="132.0" prefHeight="255.0" prefWidth="434.0">
+            <GridPane fx:id="Grid_Pane" layoutX="253.0" layoutY="132.0" prefHeight="255.0" prefWidth="434.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="71.79998779296875" minWidth="10.0" prefWidth="51.6000244140625" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.80003662109375" minWidth="10.0" prefWidth="39.00001220703125" />
@@ -38,21 +38,31 @@
                   <RowConstraints maxHeight="53.400000000000006" minHeight="10.0" prefHeight="51.799963378906256" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fx:id="a00" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="a10" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                  <ImageView fx:id="a20" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-                  <ImageView fx:id="a30" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
-                  <ImageView fx:id="a40" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
-                  <ImageView fx:id="a01" fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-                  <ImageView fx:id="a11" fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ImageView fx:id="a21" fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ImageView fx:id="a31" fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ImageView fx:id="a41" fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                   <ImageView fx:id="a02" fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-                   <ImageView fx:id="a12" fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Plants%20vs%20Zombies%20Assets/PeaShootera.gif" />
-                     </image></ImageView>
+                        <Image url="@Plants%20vs%20Zombies%20Assets/lawn_mower.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@Plants%20vs%20Zombies%20Assets/lawn_mower.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@Plants%20vs%20Zombies%20Assets/lawn_mower.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@Plants%20vs%20Zombies%20Assets/lawn_mower.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@Plants%20vs%20Zombies%20Assets/lawn_mower.gif" />
+                     </image>
+                  </ImageView>
                </children>
             </GridPane>
             <ImageView fitHeight="468.0" fitWidth="123.0" layoutY="-1.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
@@ -60,7 +70,7 @@
                   <Image url="@Plants%20vs%20Zombies%20Assets/side%20panel.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="71.0" fitWidth="97.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="PeaShooter_Seed" fitHeight="71.0" fitWidth="97.0" layoutX="6.0" layoutY="6.0" onMouseClicked="#Peaseedselected" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Plants%20vs%20Zombies%20Assets/PeashooterSeed.PNG.png" />
                </image>
@@ -75,7 +85,7 @@
                   <Image url="@Plants%20vs%20Zombies%20Assets/WallNut.PNG.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="71.0" fitWidth="97.0" layoutX="6.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Sunflower_Seed" fitHeight="71.0" fitWidth="97.0" layoutX="6.0" layoutY="248.0" onMouseClicked="#SunflowerSeedSelected" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Plants%20vs%20Zombies%20Assets/SunflowerSeed.PNG.png" />
                </image>
