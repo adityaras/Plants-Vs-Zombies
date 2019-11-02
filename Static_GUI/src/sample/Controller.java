@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -10,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import java.io.IOException;
 
 
@@ -17,6 +19,7 @@ public class Controller {
     public static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);
     public static  Stage Ranking_Stage = new Stage(StageStyle.TRANSPARENT);
     public static Stage Settings_Stage = new Stage(StageStyle.TRANSPARENT);
+    public static Stage Game_Play_Stage = new Stage(StageStyle.TRANSPARENT);
     public ImageView Play;
     public ImageView Load;
     public ImageView Exit;
@@ -85,8 +88,14 @@ public class Controller {
     }
 
     @FXML
-    public void playgame()
-    {
+    public void playgame() throws IOException {
+        Main_Menu_Screen.Main_Game.setOpacity(0.5);
+        Game_Play_Stage.setTitle("Plants Vs Zombies");
+        FXMLLoader fxmlloader =  new FXMLLoader();
+        fxmlloader.setLocation(Game_GUI.class.getResource("Main_GamePlay.fxml"));
+        ScrollPane leaderboard = (ScrollPane) fxmlloader.load();
+        Ranking_Stage.setScene(new Scene(leaderboard, Color.TRANSPARENT));
+        Ranking_Stage.showAndWait();
 
     }
     @FXML
