@@ -21,18 +21,13 @@ public class Main_Gameplay_Controller implements Initializable {
     private int Selector;
 
     @FXML
-    suntoken
+    public ImageView Sun_token;
 
     @FXML
-    Line lane1;
+    public ImageView Zombie1;
+
     @FXML
-    Line lane2;
-    @FXML
-    Line lane3;
-    @FXML
-    Line lane4;
-    @FXML
-    Line lane5;
+    public ImageView Zombie2;
 
     @FXML
     public ImageView Sunflower_Seed;
@@ -67,8 +62,8 @@ public class Main_Gameplay_Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Line[] My_lanes={lane1,lane2,lane3,lane4,lane5};
-
+        move_zombies();
+        sun_token_fall();
 
         scroll_pane.getKeyFrames().addAll(
                 new KeyFrame((new Duration(2000)), new KeyValue(scrollpane_GamePlay.hvalueProperty() ,0)),
@@ -80,7 +75,7 @@ public class Main_Gameplay_Controller implements Initializable {
                 new KeyFrame((new Duration(4000)), new KeyValue(scrollpane_GamePlay.hvalueProperty(),0))
 
         );
-        for(int row=0;row<5;row++) {
+        for(int row=4;row<9;row++) {
             StackPane Image_Holder = null;
             for (int col = 0; col < 10; col++) {
                 Image_Holder = new StackPane();
@@ -118,7 +113,7 @@ public class Main_Gameplay_Controller implements Initializable {
                             Grid_Pane.add(Bullet_Holder, fcol, frow);
                             if (Selector == 1) {
                                 System.out.println("pea is selected !!! row is " + frow + " col is " + fcol);
-                                shoot_pea(Bullet_Holder, My_lanes[frow]);
+                                shoot_pea(Bullet_Holder);
                             }
                             putter.toFront();
                             Selector = 0;
@@ -139,8 +134,8 @@ public class Main_Gameplay_Controller implements Initializable {
         Selector=2;
     }
 
-    private void shoot_pea(ImageView Bullet_Holder, Line myline){
-        System.out.println("Yup the function is called");
+    private void shoot_pea(ImageView Bullet_Holder){
+        //System.out.println("Yup the function is called");
         TranslateTransition pea_shot=new TranslateTransition();
         pea_shot.setNode(Bullet_Holder);
         pea_shot.setByX(1000);
@@ -148,5 +143,33 @@ public class Main_Gameplay_Controller implements Initializable {
         pea_shot.setCycleCount(Timeline.INDEFINITE);
         pea_shot.play();
 
+    }
+
+    private void move_zombies(){
+        TranslateTransition zombie_mov_1=new TranslateTransition();
+        zombie_mov_1.setNode(Zombie1);
+        Zombie1.setFitWidth(220);
+        Zombie1.setFitWidth(220);
+        zombie_mov_1.setByX(-1000);
+        zombie_mov_1.setDuration(Duration.seconds(100));
+        zombie_mov_1.play();
+
+        TranslateTransition zombie_mov_2=new TranslateTransition();
+        Zombie2.setFitWidth(220);
+        Zombie2.setFitWidth(220);
+        zombie_mov_2.setNode(Zombie2);
+        zombie_mov_2.setByX(-1000);
+        zombie_mov_2.setDuration(Duration.seconds(100));
+        zombie_mov_2.play();
+    }
+
+    private void sun_token_fall(){
+        TranslateTransition sun_token_fell=new TranslateTransition();
+        Sun_token.setFitWidth(30);
+        Sun_token.setFitWidth(30);
+        sun_token_fell.setNode(Sun_token);
+        sun_token_fell.setByY(300);
+        sun_token_fell.setDuration(Duration.seconds(30));
+        sun_token_fell.play();
     }
 }
