@@ -1,21 +1,21 @@
-
 package sample;
-
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class Settings_Controller {
+public class Settings_Controller implements Initializable {
     public static Stage Instruction_stage= new Stage(StageStyle.TRANSPARENT);
     public static Stage Credits_stage= new Stage(StageStyle.TRANSPARENT);
 
@@ -25,12 +25,12 @@ public class Settings_Controller {
     private ImageView credits;
     @FXML
     private ImageView go_back;
-    Image credits_button = new Image("sample/Plants vs Zombies Assets/Credits Button.png");
-    Image instructions_button = new Image("sample/Plants vs Zombies Assets/Instructions Button.png");
-    Image instructions_pressed = new Image("sample/Plants vs Zombies Assets/INstruction_pressed.png");
-    Image credits_pressed = new Image("sample/Plants vs Zombies Assets/credits_pressed.png");
-    Image go_back_button = new Image("sample/Plants vs Zombies Assets/Go back button.png");
-    Image go_back_pressed = new Image("sample/Plants vs Zombies Assets/Go back button@2x_pressed.png");
+    private Image credits_button = new Image("sample/Plants vs Zombies Assets/Credits Button.png");
+    private Image instructions_button = new Image("sample/Plants vs Zombies Assets/Instructions Button.png");
+    private Image instructions_pressed = new Image("sample/Plants vs Zombies Assets/INstruction_pressed.png");
+    private Image credits_pressed = new Image("sample/Plants vs Zombies Assets/credits_pressed.png");
+    private Image go_back_button = new Image("sample/Plants vs Zombies Assets/Go back button.png");
+    private Image go_back_pressed = new Image("sample/Plants vs Zombies Assets/Go back button@2x_pressed.png");
 
     @FXML
     public void instruction_entered()
@@ -79,6 +79,14 @@ public class Settings_Controller {
     {
         Main_Menu_Screen.Main_Game.setOpacity(1);
         Controller.Settings_Stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Instruction_stage.initOwner(Controller.Settings_Stage);
+        Credits_stage.initOwner(Controller.Settings_Stage);
+        Instruction_stage.initModality(Modality.WINDOW_MODAL);
+        Instruction_stage.initModality(Modality.WINDOW_MODAL);
     }
 }
 
