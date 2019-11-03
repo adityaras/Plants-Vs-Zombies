@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="572.0" styleClass="pane_exit" stylesheets="@buttons.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Pause_menu_Controller">
+   <children>
+      <ImageView fitHeight="406.0" fitWidth="542.0" layoutX="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Options_Menu.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="67.0" fitWidth="349.0" layoutX="120.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Main_menu_button" fitHeight="60.0" fitWidth="295.0" layoutX="146.0" layoutY="174.0" onMouseClicked="#Main_menu_button_played" onMouseEntered="#main_menu_button_entered" onMouseExited="#main_menu__button_exited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Main%20Menu@2x.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="GoBack" fitHeight="57.0" fitWidth="284.0" layoutX="196.0" layoutY="256.0" onMouseClicked="#go_back" onMouseEntered="#go_back_entered" onMouseExited="#go_back_exited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Plants%20vs%20Zombies%20Assets/Go%20back%20button@2x.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

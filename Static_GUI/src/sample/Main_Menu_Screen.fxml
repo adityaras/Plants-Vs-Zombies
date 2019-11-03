@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <ImageView fitHeight="584.0" fitWidth="819.0" layoutX="-8.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -16,7 +16,7 @@
             <Image url="@Plants%20vs%20Zombies%20Assets/Actual%20Button.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Load" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="127.0" onMouseClicked="#savegame" onMouseEntered="#loadentered" onMouseExited="#loadexited" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Load" fitHeight="63.0" fitWidth="306.0" layoutX="514.0" layoutY="127.0" onMouseClicked="#load_game" onMouseEntered="#loadentered" onMouseExited="#loadexited" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Plants%20vs%20Zombies%20Assets/load%20button.png" />
          </image>

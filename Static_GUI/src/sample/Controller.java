@@ -22,7 +22,8 @@ public class Controller implements Initializable {
     static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);
     static  Stage Ranking_Stage = new Stage(StageStyle.TRANSPARENT);
     static Stage Settings_Stage = new Stage(StageStyle.TRANSPARENT);
-    private static Stage Game_Play_Stage = new Stage(StageStyle.TRANSPARENT);
+    static Stage Loading_Stage = new Stage(StageStyle.TRANSPARENT);;
+    static Stage Game_Play_Stage = new Stage(StageStyle.TRANSPARENT);
     public ImageView Play;
     public ImageView Load;
     public ImageView Exit;
@@ -38,6 +39,7 @@ public class Controller implements Initializable {
     private Image exitpressed = new Image("sample/Plants vs Zombies Assets/Exit button_pressed.png");
     private Image Settingpressed = new Image("sample/Plants vs Zombies Assets/Settings button_pressed.png");
     private Image Rankingpressed = new Image("sample/Plants vs Zombies Assets/Ranking BG_pressed.png");
+
 
 
     @FXML
@@ -103,9 +105,14 @@ public class Controller implements Initializable {
 
     }
     @FXML
-    public void savegame()
-    {
-
+    public void load_game() throws IOException {
+        Main_Menu_Screen.Main_Game.setOpacity(0.5);
+        Loading_Stage.setTitle("choose one of your game");
+        FXMLLoader fxmlloader =  new FXMLLoader();
+        fxmlloader.setLocation(Game_GUI.class.getResource("load_game.fxml"));
+        Pane load_game = (Pane) fxmlloader.load();
+        Loading_Stage.setScene(new Scene(load_game, Color.TRANSPARENT));
+        Loading_Stage.showAndWait();
     }
     @FXML
     public void leaderboard() throws IOException {
@@ -151,5 +158,7 @@ public class Controller implements Initializable {
         Ranking_Stage.initModality(Modality.WINDOW_MODAL);
         Game_Play_Stage.initOwner(Main_Menu_Screen.Main_Game);
         Game_Play_Stage.initModality(Modality.WINDOW_MODAL);
+        Loading_Stage.initOwner(Main_Menu_Screen.Main_Game);
+        Loading_Stage.initModality(Modality.WINDOW_MODAL);
     }
 }

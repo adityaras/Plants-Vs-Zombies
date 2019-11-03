@@ -1,24 +1,36 @@
 package sample;
 
-import javafx.animation.*;
-import javafx.scene.shape.Line;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
 
 public class Main_Gameplay_Controller implements Initializable {
     private int Selector;
+    static Stage options_stage=new Stage(StageStyle.TRANSPARENT);
 
     @FXML
     public ImageView Sun_token;
@@ -28,6 +40,13 @@ public class Main_Gameplay_Controller implements Initializable {
 
     @FXML
     public ImageView Zombie2;
+
+    @FXML
+    public ProgressBar pb;
+
+    @FXML
+    public ImageView options_button;
+
 
     @FXML
     public ImageView Sunflower_Seed;
@@ -59,9 +78,20 @@ public class Main_Gameplay_Controller implements Initializable {
     private Image SunFlower = new Image("sample/Plants vs Zombies Assets/SunflowerSeed.PNG.png");
     private Image SunFlowerSelected = new Image("sample/Plants vs Zombies Assets/SunflowerSelected.gif");
     private Image Pea_Bullet=new Image("sample/Plants vs Zombies Assets/ProjectilePea.png");
+    private Image options=new Image("sample/Plants vs Zombies Assets/options.png");
+    private Image options_pressed= new Image("sample/Plants vs Zombies Assets/options_pressed.png");
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        options_stage.initOwner(Controller.Game_Play_Stage);
+        options_stage.initModality(Modality.WINDOW_MODAL);
+
+        Timeline pb_timeline=new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(pb.progressProperty(), 0)),
+                new KeyFrame(Duration.seconds(300), new KeyValue(pb.progressProperty(), 1))
+        );
+        pb_timeline.playFromStart();
         move_zombies();
         sun_token_fall();
 
@@ -166,10 +196,32 @@ public class Main_Gameplay_Controller implements Initializable {
     private void sun_token_fall(){
         TranslateTransition sun_token_fell=new TranslateTransition();
         Sun_token.setFitWidth(30);
-        Sun_token.setFitWidth(30);
+        Sun_token.setFitHeight(30);
         sun_token_fell.setNode(Sun_token);
         sun_token_fell.setByY(300);
         sun_token_fell.setDuration(Duration.seconds(30));
         sun_token_fell.play();
+    }
+    @FXML
+    public void options_entered(){
+        options_button.setImage(options_pressed);
+    }
+    @FXML
+    public void options_exited(){
+        options_button.setImage(options);
+    }
+    @FXML
+    public void options_clicked() throws IOException {
+        Controller.Game_Play_Stage.setOpacity(0.5);
+        options_stage.setTitle("choose one of your game");
+        FXMLLoader fxmlloader =  new FXMLLoader();
+        fxmlloader.setLocation(Game_GUI.class.getResource("Pause_menu.fxml"));
+        Pane options_menu = (Pane) fxmlloader.load();
+        options_stage.setScene(new Scene(options_menu, Color.TRANSPARENT));
+        options_stage.showAndWait();
+    }
+
+    public static void close_my_stage(){
+        Controller.Game_Play_Stage.close();
     }
 }
