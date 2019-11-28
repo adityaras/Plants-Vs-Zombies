@@ -11,8 +11,9 @@ public class Pause_menu_Controller   {
 
     private Image goback = new Image("sample/Plants vs Zombies Assets/Go back button@2x.png");
     private Image goback_pressed = new Image("sample/Plants vs Zombies Assets/Go back button@2x_pressed.png");
-    Image main_menu=new Image("sample/Plants vs Zombies Assets/Main Menu.png");
-    Image main_menu_pressed= new Image("sample/Plants vs Zombies Assets/Main_Menu_Pressed.png");
+    private Image main_menu=new Image("sample/Plants vs Zombies Assets/Main Menu.png");
+    private Image main_menu_pressed= new Image("sample/Plants vs Zombies Assets/Main_Menu_Pressed.png");
+
     @FXML
     public void go_back_entered(){ GoBack.setImage(goback_pressed);}
     @FXML
@@ -35,7 +36,8 @@ public class Pause_menu_Controller   {
         Main_Menu_Screen.Main_Game.setOpacity(1);
         System.out.println("hello");
         Controller.Game_Play_Stage.close();
-        //Main_Gameplay_Controller.close_my_stage();
+        System.out.println("The above statement did not execute Did not execute");
+        Main_Gameplay_Controller.close_my_stage();
         Main_Gameplay_Controller.options_stage.close();
     }
 }
