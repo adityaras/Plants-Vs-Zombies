@@ -8,8 +8,8 @@ public class Rankings_Controller {
 
     public ImageView GoBack;
 
-    Image goback = new Image("sample/Plants vs Zombies Assets/Go back button@2x.png");
-    Image goback_pressed = new Image("sample/Plants vs Zombies Assets/Go back button@2x_pressed.png");
+    private Image goback = new Image("sample/Plants vs Zombies Assets/Go back button@2x.png");
+    private Image goback_pressed = new Image("sample/Plants vs Zombies Assets/Go back button@2x_pressed.png");
 
     @FXML
     public void gobackentered(){ GoBack.setImage(goback_pressed);}

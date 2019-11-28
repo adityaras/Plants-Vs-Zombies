@@ -29,25 +29,21 @@ import java.util.ResourceBundle;
 
 
 public class Main_Gameplay_Controller implements Initializable {
+
     private int Selector;
+
     static Stage options_stage=new Stage(StageStyle.TRANSPARENT);
 
     @FXML
     public ImageView Sun_token;
-
     @FXML
     public ImageView Zombie1;
-
     @FXML
     public ImageView Zombie2;
-
     @FXML
     public ProgressBar pb;
-
     @FXML
     public ImageView options_button;
-
-
     @FXML
     public ImageView Sunflower_Seed;
     @FXML
@@ -56,6 +52,7 @@ public class Main_Gameplay_Controller implements Initializable {
     public GridPane Grid_Pane;
     @FXML
     public ScrollPane scrollpane_GamePlay ;
+
     private boolean flag=true;
     private ImageView Bullet_Holder;
     private Timeline scroll_pane = new Timeline();
@@ -71,6 +68,7 @@ public class Main_Gameplay_Controller implements Initializable {
         flag=false;
         });}
     }
+
     private Image PeaShooterGIF = new Image("sample/Plants vs Zombies Assets/PeaShootera.gif");
     private Image SunflowerGIF = new Image("sample/Plants vs Zombies Assets/sun_flower.gif");
     private Image PeaShooter=new Image("sample/Plants vs Zombies Assets/PeashooterSeed.PNG.png");
@@ -91,6 +89,7 @@ public class Main_Gameplay_Controller implements Initializable {
                 new KeyFrame(Duration.ZERO, new KeyValue(pb.progressProperty(), 0)),
                 new KeyFrame(Duration.seconds(300), new KeyValue(pb.progressProperty(), 1))
         );
+
         pb_timeline.playFromStart();
         move_zombies();
         sun_token_fall();
@@ -140,26 +139,25 @@ public class Main_Gameplay_Controller implements Initializable {
 
                         if(putter.getChildren().isEmpty() ) {
                             putter.getChildren().addAll(Plant);
-                            Grid_Pane.add(Bullet_Holder, fcol, frow);
+
                             if (Selector == 1) {
+                                Grid_Pane.add(Bullet_Holder, fcol, frow);
                                 System.out.println("pea is selected !!! row is " + frow + " col is " + fcol);
                                 shoot_pea(Bullet_Holder);
                             }
                             putter.toFront();
-                            Selector = 0;
+                            //Selector = 0;
                         }
                 }
             });
         }
         }
     }
-    public void Peaseedselected()
-    {
+    public void Peaseedselected() {
         PeaShooter_Seed.setImage(PeaShooterSelected);
         Selector=1;
     }
-    public void SunflowerSeedSelected()
-    {
+    public void SunflowerSeedSelected() {
         Sunflower_Seed.setImage(SunFlowerSelected);
         Selector=2;
     }
@@ -219,8 +217,10 @@ public class Main_Gameplay_Controller implements Initializable {
         Pane options_menu = (Pane) fxmlloader.load();
         options_stage.setScene(new Scene(options_menu, Color.TRANSPARENT));
         options_stage.showAndWait();
+
     }
 
+    @FXML
     public static void close_my_stage(){
         Controller.Game_Play_Stage.close();
     }

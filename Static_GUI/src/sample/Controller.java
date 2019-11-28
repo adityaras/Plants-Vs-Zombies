@@ -99,9 +99,9 @@ public class Controller implements Initializable {
         Game_Play_Stage.setTitle("Plants Vs Zombies");
         FXMLLoader fxmlloader =  new FXMLLoader();
         fxmlloader.setLocation(Game_GUI.class.getResource("Main_GamePlay.fxml"));
-        ScrollPane Play_Game = fxmlloader.load();
-        Ranking_Stage.setScene(new Scene(Play_Game, Color.TRANSPARENT));
-        Ranking_Stage.showAndWait();
+        ScrollPane Play_Game =(ScrollPane) fxmlloader.load();
+        Game_Play_Stage.setScene(new Scene(Play_Game, Color.TRANSPARENT));
+        Game_Play_Stage.showAndWait();
 
     }
     @FXML
