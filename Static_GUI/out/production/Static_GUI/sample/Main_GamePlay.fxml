@@ -18,34 +18,9 @@
                   <Image url="@Plants%20vs%20Zombies%20Assets/Plans_ver_zambis.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="467.0" fitWidth="115.0" layoutX="-2.0" layoutY="15.0" opacity="0.46" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Plants%20vs%20Zombies%20Assets/side%20panel@3x.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="468.0" fitWidth="123.0" layoutY="-1.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Plants%20vs%20Zombies%20Assets/side%20panel.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="Sunflower_Seed" fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="49.0" onMouseClicked="#SunflowerSeedSelected" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Plants%20vs%20Zombies%20Assets/SunflowerSeed.PNG.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="PeaShooter_Seed" fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="291.0" onMouseClicked="#Peaseedselected" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Plants%20vs%20Zombies%20Assets/PeashooterSeed.PNG.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Plants%20vs%20Zombies%20Assets/CherryBombSeed.PNG.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Plants%20vs%20Zombies%20Assets/WallNut.PNG.png" />
                </image>
             </ImageView>
             <GridPane fx:id="Grid_Pane" layoutX="253.0" layoutY="-72.0" prefHeight="459.0" prefWidth="725.0">
@@ -120,11 +95,6 @@
                   </ImageView>
                </children>
             </GridPane>
-            <ImageView fitHeight="83.0" fitWidth="173.0" layoutX="3.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Plants%20vs%20Zombies%20Assets/Images/Sun_tokens.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="109.0" fitWidth="205.0" layoutX="173.0" layoutY="-6.0" opacity="0.54" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Plants%20vs%20Zombies%20Assets/side%20panel.png" />
@@ -141,6 +111,36 @@
                </image>
             </ImageView>
             <ProgressBar fx:id="pb" layoutX="527.0" layoutY="-3.0" prefHeight="36.0" prefWidth="225.0" progress="0.0" />
+            <ImageView fitHeight="467.0" fitWidth="115.0" layoutX="-2.0" layoutY="15.0" opacity="0.46" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Plants%20vs%20Zombies%20Assets/side%20panel@3x.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="PeaShooter_Seed" fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="291.0" onMouseClicked="#Peaseedselected" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Plants%20vs%20Zombies%20Assets/PeashooterSeed.PNG.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Plants%20vs%20Zombies%20Assets/WallNut.PNG.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Plants%20vs%20Zombies%20Assets/CherryBombSeed.PNG.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Sunflower_Seed" fitHeight="71.0" fitWidth="97.0" layoutX="4.0" layoutY="49.0" onMouseClicked="#SunflowerSeedSelected" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Plants%20vs%20Zombies%20Assets/SunflowerSeed.PNG.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="83.0" fitWidth="173.0" layoutX="3.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Plants%20vs%20Zombies%20Assets/Images/Sun_tokens.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </content>

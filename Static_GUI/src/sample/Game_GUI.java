@@ -68,7 +68,7 @@ public class Game_GUI extends Application {
         }
     }
     public void playSound() {
-        try {
+        /*try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("D:\\Codes\\PVZ_BANEA\\AP-PROJECT\\Static_GUI\\src\\sample\\Plants vs Zombies Assets\\BackGround.wav").getAbsoluteFile());
             //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sample/Plants vs Zombies Assets/BackGround.wav").getAbsoluteFile());
             Clip clip = AudioSystem.getClip();
@@ -77,7 +77,7 @@ public class Game_GUI extends Application {
         } catch(Exception ex) {
             System.out.println("Error In Sound File Location, Try giving full Path");
             ex.printStackTrace();
-        }
+        }*/
     }
     public static void main(String[] args) {
         launch(args);

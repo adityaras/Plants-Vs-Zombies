@@ -4,9 +4,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
+import javafx.scene.PointLight;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
@@ -17,6 +22,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
+import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,6 +31,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.BatchUpdateException;
 import java.util.ResourceBundle;
 
 
@@ -58,8 +66,9 @@ public class Main_Gameplay_Controller implements Initializable {
     private ImageView Bullet_Holder;
     private Timeline scroll_pane = new Timeline();
     private Timeline scroll_pane_reset = new Timeline();
-
-
+    private ImageView Plant;
+    private TranslateTransition zombie_mov_1;
+    private TranslateTransition pea_shot;
 
     public void scroll_pane_to_show_zombies()
     { if(flag)
@@ -124,13 +133,14 @@ public class Main_Gameplay_Controller implements Initializable {
                     StackPane putter=(StackPane) e1.getSource();
                     if (Selector > 0 && Selector < 6 ) {
 
-                        ImageView Plant = new ImageView();
+                        Plant = new ImageView();
                         Plant.setFitHeight(60);
                         Plant.setFitWidth(50);
                         if (Selector == 1 && !putter.getChildren().contains(Plant)) {
 
                             Plant.setImage(PeaShooterGIF);
                             PeaShooter_Seed.setImage(PeaShooter);
+
 
                         } else if (Selector == 2 && !putter.getChildren().contains(Plant)) {
                             Plant.setImage(SunflowerGIF);
@@ -149,8 +159,20 @@ public class Main_Gameplay_Controller implements Initializable {
                                 Grid_Pane.add(Bullet_Holder, fcol, frow);
                                 System.out.println("pea is selected !!! row is " + frow + " col is " + fcol);
                                 shoot_pea(Bullet_Holder);
+                                Bullet_Holder.translateXProperty().addListener(checkIntersection);
                             }
-                            putter.toFront();
+
+
+                            System.out.println(Bullet_Holder.getBoundsInParent());
+                            System.out.println(Zombie1.getBoundsInParent());
+
+                            Plant.getParent().toFront();
+                            Zombie1.toFront();
+
+                            /*Zombie1.setFitWidth(20);
+                            Zombie1.setFitHeight(220);*/
+                            Zombie1.translateXProperty().addListener(check_Zombie_Plant_Intersection);
+                            System.out.println("Okay then");
                             //Selector = 0;
                         }
                 }
@@ -158,6 +180,14 @@ public class Main_Gameplay_Controller implements Initializable {
         }
         }
     }
+
+    public void handle(javafx.event.ActionEvent event) {
+
+        System.out.println("Hello this amazing function is being called");
+
+    }
+
+
     public void Peaseedselected() {
         PeaShooter_Seed.setImage(PeaShooterSelected);
         Selector=1;
@@ -167,33 +197,45 @@ public class Main_Gameplay_Controller implements Initializable {
         Selector=2;
     }
 
-    private void shoot_pea(ImageView Bullet_Holder){
+    private void shoot_pea(ImageView Bullet_Holder) {
         //System.out.println("Yup the function is called");
-        TranslateTransition pea_shot=new TranslateTransition();
+        pea_shot = new TranslateTransition();
         pea_shot.setNode(Bullet_Holder);
-        pea_shot.setByX(1000);
+        pea_shot.setToX(Bullet_Holder.getX()+1000);
         pea_shot.setDuration(Duration.seconds(3));
-        pea_shot.setCycleCount(Timeline.INDEFINITE);
+        pea_shot.setCycleCount(3);
+        pea_shot.setOnFinished(event -> Shoot_pea_Again());
         pea_shot.play();
-
     }
 
+    private void Shoot_pea_Again(){
+        System.out.println("Trying to play this again");
+        pea_shot.playFromStart();
+    };
+
+    private final ChangeListener<Number> checkIntersection = (ob, n, n1)->{
+        if (Bullet_Holder.getBoundsInParent().intersects(Zombie1.getBoundsInParent())){
+
+            //System.out.println("hello");
+
+        }
+    };
+
+    private final ChangeListener<Number> check_Zombie_Plant_Intersection = (ob, n, n1)->{
+        if (Zombie1.getBoundsInParent().intersects(Plant.getParent().getBoundsInParent())){
+            System.out.println("\n\n\nDETECTED ZOMBIE\n\n\n");
+            zombie_mov_1.pause();
+        }
+    };
+
+
     private void move_zombies(){
-        TranslateTransition zombie_mov_1=new TranslateTransition();
+        zombie_mov_1=new TranslateTransition();
         zombie_mov_1.setNode(Zombie1);
         Zombie1.setFitWidth(220);
-        Zombie1.setFitWidth(220);
         zombie_mov_1.setByX(-1000);
-        zombie_mov_1.setDuration(Duration.seconds(100));
+        zombie_mov_1.setDuration(Duration.seconds(50));
         zombie_mov_1.play();
-
-        TranslateTransition zombie_mov_2=new TranslateTransition();
-        Zombie2.setFitWidth(220);
-        Zombie2.setFitWidth(220);
-        zombie_mov_2.setNode(Zombie2);
-        zombie_mov_2.setByX(-1000);
-        zombie_mov_2.setDuration(Duration.seconds(100));
-        zombie_mov_2.play();
     }
 
     private void sun_token_fall(){
