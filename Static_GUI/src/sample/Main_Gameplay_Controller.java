@@ -120,7 +120,6 @@ public class Main_Gameplay_Controller implements Initializable {
                 final int fcol=col;
 
                 Image_Holder.setOnMouseClicked((MouseEvent e1) -> {
-
                     StackPane putter=(StackPane) e1.getSource();
                     if (Selector > 0 && Selector < 6 ) {
 
