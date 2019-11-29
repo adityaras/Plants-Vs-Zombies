@@ -19,16 +19,21 @@ import java.util.ResourceBundle;
 
 
 public class Controller implements Initializable {
+
+    private static Boolean Set_Ownership_Flag=false;
+
     static Stage Exit_Stage =new Stage(StageStyle.TRANSPARENT);
     static  Stage Ranking_Stage = new Stage(StageStyle.TRANSPARENT);
     static Stage Settings_Stage = new Stage(StageStyle.TRANSPARENT);
     static Stage Loading_Stage = new Stage(StageStyle.TRANSPARENT);;
     static Stage Game_Play_Stage = new Stage(StageStyle.TRANSPARENT);
+
     public ImageView Play;
     public ImageView Load;
     public ImageView Exit;
     public ImageView Settings;
     public ImageView Ranking;
+
     private Image play = new Image("sample/Plants vs Zombies Assets/Actual Button.png");
     private Image load = new Image("sample/Plants vs Zombies Assets/load button.png");
     private Image exit = new Image("sample/Plants vs Zombies Assets/Exit button.png");
@@ -150,15 +155,19 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Settings_Stage.initOwner(Main_Menu_Screen.Main_Game);
-        Settings_Stage.initModality(Modality.WINDOW_MODAL);
-        Exit_Stage.initOwner(Main_Menu_Screen.Main_Game);
-        Exit_Stage.initModality(Modality.WINDOW_MODAL);
-        Ranking_Stage.initOwner(Main_Menu_Screen.Main_Game);
-        Ranking_Stage.initModality(Modality.WINDOW_MODAL);
-        Game_Play_Stage.initOwner(Main_Menu_Screen.Main_Game);
-        Game_Play_Stage.initModality(Modality.WINDOW_MODAL);
-        Loading_Stage.initOwner(Main_Menu_Screen.Main_Game);
-        Loading_Stage.initModality(Modality.WINDOW_MODAL);
+        if(!Set_Ownership_Flag) {
+            Settings_Stage.initOwner(Main_Menu_Screen.Main_Game);
+            Settings_Stage.initModality(Modality.WINDOW_MODAL);
+            Exit_Stage.initOwner(Main_Menu_Screen.Main_Game);
+            Exit_Stage.initModality(Modality.WINDOW_MODAL);
+            Ranking_Stage.initOwner(Main_Menu_Screen.Main_Game);
+            Ranking_Stage.initModality(Modality.WINDOW_MODAL);
+            Game_Play_Stage.initOwner(Main_Menu_Screen.Main_Game);
+            Game_Play_Stage.initModality(Modality.WINDOW_MODAL);
+            Loading_Stage.initOwner(Main_Menu_Screen.Main_Game);
+            Loading_Stage.initModality(Modality.WINDOW_MODAL);
+
+            Set_Ownership_Flag=true;
+        }
     }
 }

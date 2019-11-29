@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 public class Main_Gameplay_Controller implements Initializable {
 
     private int Selector;
+    private static Boolean Set_Ownership_Flag=false;
 
     static Stage options_stage=new Stage(StageStyle.TRANSPARENT);
 
@@ -82,8 +83,12 @@ public class Main_Gameplay_Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        options_stage.initOwner(Controller.Game_Play_Stage);
-        options_stage.initModality(Modality.WINDOW_MODAL);
+
+        if(!Set_Ownership_Flag) {
+            options_stage.initOwner(Controller.Game_Play_Stage);
+            options_stage.initModality(Modality.WINDOW_MODAL);
+            Set_Ownership_Flag=true;
+        }
 
         Timeline pb_timeline=new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(pb.progressProperty(), 0)),
@@ -220,8 +225,4 @@ public class Main_Gameplay_Controller implements Initializable {
 
     }
 
-    @FXML
-    public static void close_my_stage(){
-        Controller.Game_Play_Stage.close();
-    }
 }

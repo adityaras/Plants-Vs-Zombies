@@ -34,10 +34,11 @@ public class Pause_menu_Controller   {
     public void Main_menu_button_played()
     {
         Main_Menu_Screen.Main_Game.setOpacity(1);
-        System.out.println("hello");
+        //System.out.println("hello");
+        Controller.Game_Play_Stage.setOpacity(1);
         Controller.Game_Play_Stage.close();
-        System.out.println("The above statement did not execute Did not execute");
-        Main_Gameplay_Controller.close_my_stage();
+        //System.out.println("The above statement did not execute Did not execute");
+        //Main_Gameplay_Controller.close_my_stage();
         Main_Gameplay_Controller.options_stage.close();
     }
 }
