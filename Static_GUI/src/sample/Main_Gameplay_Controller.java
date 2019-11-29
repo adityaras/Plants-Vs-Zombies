@@ -146,13 +146,15 @@ public class Main_Gameplay_Controller implements Initializable {
                         Plant.setFitHeight(60);
                         Plant.setFitWidth(50);
                         if (Selector == 1 && !putter.getChildren().contains(Plant)) {
-
+                            Token.sun_token_counter-=100;
                             Plant.setImage(PeaShooterGIF);
                             PeaShooter_Seed.setImage(PeaShooter);
 
                         } else if (Selector == 2 && !putter.getChildren().contains(Plant)) {
                             Plant.setImage(SunflowerGIF);
                             Sunflower_Seed.setImage(SunFlower);
+                            Token.sun_token_counter-=50;
+
                         }
 
 
@@ -194,14 +196,13 @@ public class Main_Gameplay_Controller implements Initializable {
         if (Token.sun_token_counter>=100)
         {PeaShooter_Seed.setImage(PeaShooterSelected);
         Selector=1;
-        Token.sun_token_counter-=100;
+
         }
     }
     public void SunflowerSeedSelected() {
         if (Token.sun_token_counter>=50)
         {Sunflower_Seed.setImage(SunFlowerSelected);
         Selector=2;
-        Token.sun_token_counter-=50;
         }
     }
 
