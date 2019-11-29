@@ -31,7 +31,6 @@ import java.util.ResourceBundle;
 public class Main_Gameplay_Controller implements Initializable {
 
     private int Selector;
-
     static Stage options_stage=new Stage(StageStyle.TRANSPARENT);
 
     @FXML
@@ -57,7 +56,6 @@ public class Main_Gameplay_Controller implements Initializable {
     private ImageView Bullet_Holder;
     private Timeline scroll_pane = new Timeline();
     private Timeline scroll_pane_reset = new Timeline();
-
 
 
     public void scroll_pane_to_show_zombies()
@@ -123,13 +121,15 @@ public class Main_Gameplay_Controller implements Initializable {
                         Plant.setFitHeight(60);
                         Plant.setFitWidth(50);
                         if (Selector == 1 && !putter.getChildren().contains(Plant)) {
-
+                            Sunflower_Seed.setImage(SunFlower);
                             Plant.setImage(PeaShooterGIF);
-                            PeaShooter_Seed.setImage(PeaShooter);
+
 
                         } else if (Selector == 2 && !putter.getChildren().contains(Plant)) {
+
+                            PeaShooter_Seed.setImage(PeaShooter);
                             Plant.setImage(SunflowerGIF);
-                            Sunflower_Seed.setImage(SunFlower);
+
                         }
                         Bullet_Holder=new ImageView();
                         Bullet_Holder.setImage(Pea_Bullet);
