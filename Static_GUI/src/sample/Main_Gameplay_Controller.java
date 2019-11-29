@@ -173,7 +173,7 @@ public class Main_Gameplay_Controller implements Initializable {
                             else if (Selector == 2)
                             {
                                 Timeline sun_token_sunflower = new Timeline(
-                                        new KeyFrame(Duration.seconds(2), e -> {
+                                        new KeyFrame(Duration.seconds(15), e -> {
                                             set_Sun_on_SunFlower(putter);
                                         })
                                 );
