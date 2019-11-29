@@ -69,8 +69,8 @@ public class Game_GUI extends Application {
     }
     public void playSound() {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("D:\\Codes\\PVZ_BANEA\\AP-PROJECT\\Static_GUI\\src\\sample\\Plants vs Zombies Assets\\BackGround.wav").getAbsoluteFile());
-            //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sample/Plants vs Zombies Assets/BackGround.wav").getAbsoluteFile());
+            //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("D:\\Codes\\PVZ_BANEA\\AP-PROJECT\\Static_GUI\\src\\sample\\Plants vs Zombies Assets\\BackGround.wav").getAbsoluteFile());
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\adity\\OneDrive\\Desktop\\Codes\\Java\\AP\\PVZ_BANEA\\AP-PROJECT\\Static_GUI\\src\\sample\\Plants vs Zombies Assets\\BackGround.wav").getAbsoluteFile());
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();

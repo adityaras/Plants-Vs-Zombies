@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.layout.GridPane;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 class BackEnd
@@ -72,9 +74,9 @@ class Tile implements Scene_Elements
 
 class Sun extends Weather
 {
-    public Sun_Token produce_sun_tokens()
+    public Sun_Token produce_sun_tokens(GridPane gridPane)
     {
-        Sun_Token token=new Sun_Token();
+        Sun_Token token=new Sun_Token(gridPane);
         return token;
     }
 }

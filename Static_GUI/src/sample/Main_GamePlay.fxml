@@ -8,10 +8,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <ScrollPane fx:id="scrollpane_GamePlay" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="754.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main_Gameplay_Controller">
    <content>
-      <Pane fx:id="Pane_GamePlay" onMouseEntered="#scroll_pane_to_show_zombies" prefHeight="466.0" prefWidth="1081.0">
+      <Pane fx:id="Pane_GamePlay" prefHeight="466.0" prefWidth="1081.0">
          <children>
             <ImageView fitHeight="634.0" fitWidth="1081.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -141,6 +144,12 @@
                   <Image url="@Plants%20vs%20Zombies%20Assets/Images/Sun_tokens.png" />
                </image>
             </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffff93" height="38.0" layoutX="50.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="124.0" />
+            <Text fx:id="sun_token_monitor" fill="#69460d" layoutX="52.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="118.93673706054688">
+               <font>
+                  <Font name="Jokerman" size="33.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </content>

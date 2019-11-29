@@ -17,8 +17,8 @@ public class Main_Gameplay{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Game_GUI.class.getResource("Main_Gameplay.fxml"));
-            screen=(ScrollPane) fxmlLoader.load();
-            return screen;
+           return (ScrollPane) fxmlLoader.load();
+           // return screen;
         } catch (IOException  err) {
             System.out.println("Main_GamePlay_Object_Not_Created");
             err.printStackTrace();
