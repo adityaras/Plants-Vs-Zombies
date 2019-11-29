@@ -25,7 +25,7 @@ public class load_game_controller {
     public void play_go_back()
     {
         Main_Menu_Screen.Main_Game.setOpacity(1);
-        System.out.println("hello");
+        //System.out.println("hello");
         Controller.Loading_Stage.close();
     }
 

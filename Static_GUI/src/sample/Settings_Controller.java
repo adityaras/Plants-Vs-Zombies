@@ -19,6 +19,8 @@ public class Settings_Controller implements Initializable {
     public static Stage Instruction_stage= new Stage(StageStyle.TRANSPARENT);
     public static Stage Credits_stage= new Stage(StageStyle.TRANSPARENT);
 
+    private static Boolean Set_Ownership_Flag=false;
+
     @FXML
     private ImageView instructions;
     @FXML
@@ -83,10 +85,15 @@ public class Settings_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Instruction_stage.initOwner(Controller.Settings_Stage);
-        Credits_stage.initOwner(Controller.Settings_Stage);
-        Instruction_stage.initModality(Modality.WINDOW_MODAL);
-        Instruction_stage.initModality(Modality.WINDOW_MODAL);
+        if(!Set_Ownership_Flag) {
+            //System.out.println("Set_Ownership_Flag="+Set_Ownership_Flag);
+            Instruction_stage.initOwner(Controller.Settings_Stage);
+            Credits_stage.initOwner(Controller.Settings_Stage);
+            Instruction_stage.initModality(Modality.WINDOW_MODAL);
+            Instruction_stage.initModality(Modality.WINDOW_MODAL);
+
+            Set_Ownership_Flag=true;
+        }
     }
 }
 
