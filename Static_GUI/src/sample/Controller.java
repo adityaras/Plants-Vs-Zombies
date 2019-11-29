@@ -102,10 +102,8 @@ public class Controller implements Initializable {
     public void playgame() throws IOException {
         Main_Menu_Screen.Main_Game.setOpacity(0.5);
         Game_Play_Stage.setTitle("Plants Vs Zombies");
-        FXMLLoader fxmlloader =  new FXMLLoader();
-        fxmlloader.setLocation(Game_GUI.class.getResource("Main_GamePlay.fxml"));
-        ScrollPane Play_Game =(ScrollPane) fxmlloader.load();
-        Game_Play_Stage.setScene(new Scene(Play_Game, Color.TRANSPARENT));
+        Main_Gameplay game=new Main_Gameplay();
+        Game_Play_Stage.setScene(new Scene(game.showMainGameplay_Screen(), Color.TRANSPARENT));
         Game_Play_Stage.showAndWait();
 
     }
