@@ -1,8 +1,10 @@
+package sample;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-class PVZ_main
+class BackEnd
 {
-    public static void main(String args[])
+    public static void main1(String args[])
     {
         Game_menu game=new Game_menu();
     }
@@ -20,10 +22,7 @@ interface Character extends Scene_Elements
 public void move();
 public void action();
 }
-interface Scene_Elements
-{
 
-}
 class Narrator implements Scene_Elements
 {
     public void speak()
@@ -68,33 +67,8 @@ class Tile implements Scene_Elements
         this.ispit = ispit;
     }
 }
-class Token implements Scene_Elements
-{
 
-}
-class Sun_Token extends Token
-{
 
-}
-class Shade_Token extends Token
-{
-
-}
-class Rain_Token extends Token
-{
-
-}
-class Weather implements Scene_Elements{
-    private int time;
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-}
 
 class Sun extends Weather
 {
