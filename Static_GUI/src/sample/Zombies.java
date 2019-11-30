@@ -1,6 +1,14 @@
 package sample;
 
-import javax.swing.text.html.ImageView;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
+
+import java.util.Random;
 
 abstract class Zombies implements Character
 {
@@ -8,7 +16,8 @@ abstract class Zombies implements Character
     private Double def_pts;
     private Double Health_pts;
     private Double Speed_pts;
-    private ImageView holder;
+    protected ImageView holder=new ImageView();
+    protected Timeline zt=new Timeline();
 
     public Double getSpeed_pts() {
         return Speed_pts;
@@ -52,6 +61,28 @@ class fast_zombie extends Zombies {
         return name;
     }
 
+    fast_zombie(GridPane gridPane)
+    {
+
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/Conehead_Zombie.gif"));
+        super.holder.setOnMouseClicked(event ->
+        {
+            gridPane.getChildren().remove(super.holder);
+        });
+        super.holder.setFitWidth(60);
+        super.holder.setFitHeight(60);
+        Random rno=new Random();
+        int col=rno.nextInt(3)+12;
+        int row=rno.nextInt(5)+4;
+        gridPane.add(super.holder,col,row);
+
+        super.holder.toFront();
+        super.zt.getKeyFrames().addAll(
+                new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
+                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+        );
+        super.zt.play();
+    }
     @Override
     public void action() {
 
@@ -61,10 +92,32 @@ class fast_zombie extends Zombies {
 }
 class Normal_zombie extends Zombies{
     private final String name="Clark";
+
     public String getName() {
         return name;
     }
 
+    Normal_zombie(GridPane gridPane)
+    {
+
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/zombie_normal.gif"));
+        super.holder.setOnMouseClicked(event ->
+        {
+            gridPane.getChildren().remove(super.holder);
+        });
+        super.holder.setFitWidth(60);
+        super.holder.setFitHeight(60);
+        Random rno=new Random();
+        int col=rno.nextInt(3)+12;
+        int row=rno.nextInt(5)+4;
+        gridPane.add(super.holder,col,row);
+        super.holder.toFront();
+        super.zt.getKeyFrames().addAll(
+                new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
+                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+        );
+        super.zt.play();
+    }
     @Override
     public void action() {
 
@@ -78,7 +131,27 @@ class Cone_zombie extends Zombies{
     public String getName() {
         return name;
     }
+    Cone_zombie(GridPane gridPane)
+    {
 
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/Conehead_Zombie.gif"));
+        super.holder.setOnMouseClicked(event ->
+        {
+            gridPane.getChildren().remove(super.holder);
+        });
+        super.holder.setFitWidth(60);
+        super.holder.setFitHeight(60);
+        Random rno=new Random();
+        int col=rno.nextInt(3)+12;
+        int row=rno.nextInt(5)+4;
+        gridPane.add(super.holder,col,row);
+        super.holder.toFront();
+        super.zt.getKeyFrames().addAll(
+                new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
+                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+        );
+        super.zt.play();
+    }
     public void use_ability()
     {}
     @Override
@@ -91,6 +164,27 @@ class Boss_Zombie extends Zombies{
     public String getName() {
         return name;
     }
+    Boss_Zombie(GridPane gridPane)
+    {
+
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/Credits Button.png"));
+        super.holder.setOnMouseClicked(event ->
+        {
+            gridPane.getChildren().remove(super.holder);
+        });
+        super.holder.setFitWidth(60);
+        super.holder.setFitHeight(60);
+        Random rno=new Random();
+        int col=rno.nextInt(3)+12;
+        int row=rno.nextInt(5)+4;
+        gridPane.add(super.holder,col,row);
+        super.holder.toFront();
+        super.zt.getKeyFrames().addAll(
+                new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
+                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+        );
+        super.zt.play();
+    }
 
     public void use_ability()
     {}
@@ -100,30 +194,71 @@ class Boss_Zombie extends Zombies{
 
     }
 }
-class Jump_Zombie extends Zombies{
-    private final String name="TRAMPoline";
-    public String getName() {
-        return name;
-    }
 
-    public void use_ability()
-    {}
-
-    @Override
-    public void action() {
-
-    }
-}
 class Wolf_Zombies extends Zombies{
     private final String name="Woooooooooooolf";
     public String getName() {
         return name;
     }
+    Wolf_Zombies(GridPane gridPane)
+    {
+
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/Go back button.png"));
+        super.holder.setOnMouseClicked(event ->
+        {
+            gridPane.getChildren().remove(super.holder);
+        });
+        super.holder.setFitWidth(60);
+        super.holder.setFitHeight(60);
+        Random rno=new Random();
+        int col=rno.nextInt(3)+12;
+        int row=rno.nextInt(5)+4;
+        gridPane.add(super.holder,col,row);
+        super.holder.toFront();
+        super.zt.getKeyFrames().addAll(
+                new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
+                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+        );
+        super.zt.play();
+    }
 
     public void use_ability()
     {}
     @Override
     public void action() {
 
+    }
+}
+
+class Zombie_Factory
+{
+    public Zombies create_zombie(GridPane gridPane)
+    {
+        Random rno=new Random();
+        int type=rno.nextInt(5)+1;
+        if (type == 1 )
+        {
+            return new Normal_zombie(gridPane);
+        }
+        else if (type == 2)
+        {
+            return new fast_zombie(gridPane);
+        }
+        else if (type == 3)
+        {
+            return new Cone_zombie(gridPane);
+        }
+        else if (type == 4)
+        {
+            return new Wolf_Zombies(gridPane);
+        }
+        else if (type == 5)
+        {
+            return new Boss_Zombie(gridPane);
+        }
+        else
+        {
+            return null;
+        }
     }
 }
