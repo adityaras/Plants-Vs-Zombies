@@ -21,8 +21,7 @@ class BackEnd
 }
 interface Character extends Scene_Elements
 {
-public void move();
-public void action();
+    public void action();
 }
 
 class Narrator implements Scene_Elements
@@ -37,11 +36,6 @@ public void dig()
 {
 
 }
-
-    @Override
-    public void move() {
-
-    }
 
     @Override
     public void action() {
@@ -98,45 +92,6 @@ class Rainy_Clouds extends Weather
 }
 
 
-abstract class Plants implements Character
-{
-private Double attack_pts;
-private Double def_pts;
-private Double Health_pts;
-private Double Speed_pts;
-
-    public Double getSpeed_pts() {
-        return Speed_pts;
-    }
-
-    public void setSpeed_pts(Double speed_pts) {
-        Speed_pts = speed_pts;
-    }
-
-    public Double getAttack_pts() {
-        return attack_pts;
-    }
-
-    public Double getDef_pts() {
-        return def_pts;
-    }
-
-    public Double getHealth_pts() {
-        return Health_pts;
-    }
-
-    public void setAttack_pts(Double attack_pts) {
-        this.attack_pts = attack_pts;
-    }
-
-    public void setDef_pts(Double def_pts) {
-        this.def_pts = def_pts;
-    }
-
-    public void setHealth_pts(Double health_pts) {
-        Health_pts = health_pts;
-    }
-}
 
 abstract class Zombies implements Character
 {
@@ -188,11 +143,6 @@ private final String name="Bolt";
     }
 
     @Override
-    public void move() {
-
-    }
-
-    @Override
     public void action() {
 
     }
@@ -203,10 +153,6 @@ class Normal_zombie extends Zombies{
     private final String name="Clark";
     public String getName() {
         return name;
-    }
-    @Override
-    public void move() {
-
     }
 
     @Override
@@ -222,10 +168,7 @@ class Cone_zombie extends Zombies{
     public String getName() {
         return name;
     }
-    @Override
-    public void move() {
 
-    }
     public void use_ability()
     {}
     @Override
@@ -239,10 +182,6 @@ class Boss_Zombie extends Zombies{
         return name;
     }
 
-    @Override
-    public void move() {
-
-    }
     public void use_ability()
     {}
 
@@ -256,10 +195,7 @@ class Jump_Zombie extends Zombies{
     public String getName() {
         return name;
     }
-    @Override
-    public void move() {
 
-    }
     public void use_ability()
     {}
 
@@ -273,10 +209,7 @@ class Wolf_Zombies extends Zombies{
     public String getName() {
         return name;
     }
-    @Override
-    public void move() {
 
-    }
     public void use_ability()
     {}
     @Override
@@ -436,235 +369,11 @@ class Lawnmower implements Character
     }
 
     @Override
-    public void move() {
-
-    }
-
-    @Override
     public void action() {
 
     }
 }
-class Shooter_Plants extends Plants
-{
-    private Bullet bullet;
-    private  int Cost;
-    private final String name="Pea_Shooter";
-    private Double health_points;
-    private Double Experience_points;
-    public  void setCost(int cost) {
-        Cost = cost;
-    }
-    @Override
-    public void move() {
 
-    }
-
-    @Override
-    public void action() {
-
-    }
-    public void use_ability()
-    {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public  int getCost() {
-        return Cost;
-    }
-
-
-    public Double getHealth_pts() {
-        return getHealth_pts();
-    }
-
-    public Double getExperience_points() {
-        return Experience_points;
-    }
-
-
-    public void setHealth_pts(Double health_pts) {
-        this.health_points=health_pts;
-    }
-
-    public void setExperience_points(Double experience_points) {
-        Experience_points = experience_points;
-    }
-    class Bullet implements Scene_Elements
-    {
-        private Double Attack_Val;
-
-        public void setAttack_Val(Double attack_Val) {
-            Attack_Val = attack_Val;
-        }
-    }
-}
-class Sunlight_Producing_Plants extends Plants
-{
-    private static  int Cost=25;
-    private final String name="Sunflower";
-    private Double health_points;
-    private Double Experience_points;
-    public static void setCost(int cost) {
-        Cost = cost;
-    }
-    public Double getHealth_pts() {
-        return health_points;
-    }
-
-    public Double getExperience_points() {
-        return Experience_points;
-    }
-
-    public void setExperience_points(Double experience_points) {
-        Experience_points = experience_points;
-    }
-
-    public void setHealth_points(Double health_points) {
-        this.health_points = health_points;
-    }
-
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void action() {
-
-    }
-    public void use_ability()
-    {
-
-    }
-}
-class Barrier_Plants extends Plants
-{
-    private static  int Cost=30;
-    private final String name="WallNut";
-    private Double health_points;
-    private Double Experience_points;
-    public static void setCost(int cost) {
-        Cost = cost;
-    }
-    public Double getExperience_points() {
-        return Experience_points;
-    }
-
-    public Double getHealth_points() {
-        return health_points;
-    }
-
-    public static int getCost() {
-        return Cost;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setHealth_points(Double health_points) {
-        this.health_points = health_points;
-    }
-
-    public void setExperience_points(Double experience_points) {
-        Experience_points = experience_points;
-    }
-
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void action() {
-
-    }
-    public void use_ability()
-    {
-
-    }
-}
-class Bomb_Plants extends Plants
-{
-
-    private static  int Cost=25;
-    private final String name="Chilli Bomb";
-    private Double health_points;
-    private Double Experience_points;
-
-    public static void setCost(int cost) {
-        Cost = cost;
-    }
-
-    public Double getHealth_points() {
-        return health_points;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Double getExperience_points() {
-        return Experience_points;
-    }
-
-    public void setHealth_points(Double health_points) {
-        this.health_points = health_points;
-    }
-
-    public void setExperience_points(Double experience_points) {
-        Experience_points = experience_points;
-    }
-
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void action() {
-
-    }
-    public void use_ability()
-    {
-
-    }
-}
-
-class Special_Plant extends Plants
-{
-    private static  int Cost=75;
-    private final String name="Brainflower";
-    public static void setCost(int cost) {
-        Cost = cost;
-    }
-    public String getName() {
-        return name;
-    }
-
-    public static int getCost() {
-        return Cost;
-    }
-
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void action() {
-
-    }
-    public void use_ability()
-    {
-
-    }
-}
 
 class Game_menu{
     private ArrayList<Player> saved_players=new ArrayList<Player>();
