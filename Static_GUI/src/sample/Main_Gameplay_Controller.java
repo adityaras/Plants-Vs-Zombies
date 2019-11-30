@@ -98,13 +98,9 @@ public class Main_Gameplay_Controller implements Initializable {
         }   //setting the modality and ownership of options stage.
 
         Play_Progress_Bar();
-
         Play_Scroll_Animation();
-
         move_zombies();
-
         Drop_Sun_token();
-
         Place_Plants();
 
     }
@@ -181,7 +177,7 @@ public class Main_Gameplay_Controller implements Initializable {
 
         Timeline pea_shot_Timeline=new Timeline(
                 new KeyFrame(Duration.millis(0), e-> Play_pea_shot(pea_shot)),
-                new KeyFrame(Duration.millis(2990), e-> Set_Bullet_visible())
+                new KeyFrame(Duration.millis(2990), e-> Set_Bullet_visible(pea_shot))
         );
 
         Bullet_Holder.translateXProperty().addListener(checkIntersection);
@@ -192,10 +188,11 @@ public class Main_Gameplay_Controller implements Initializable {
     }
 
 
-    //the two functions below are made for testing pursposes
-    private void Set_Bullet_visible(){
+    //the two functions below are made for testing purposes
+    private void Set_Bullet_visible(TranslateTransition pea_shot){
         Bullet_Holder.setVisible(true);
         System.out.println("I DID IT");
+        Play_pea_shot(pea_shot);
     }
 
     private  void Play_pea_shot(TranslateTransition pea_shot){
