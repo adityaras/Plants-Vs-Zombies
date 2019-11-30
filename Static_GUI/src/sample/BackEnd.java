@@ -31,17 +31,7 @@ class Narrator implements Scene_Elements
 
     }
 }
-class Shovel implements Character {
-public void dig()
-{
 
-}
-
-    @Override
-    public void action() {
-
-    }
-}
 class Tile implements Scene_Elements
 {
     private Boolean ispit=false;
@@ -141,6 +131,7 @@ class Player implements Serializable, Comparable
     }
 
 }
+
 class Game implements Serializable
 {
     private int sound_lvl=50;
@@ -285,18 +276,22 @@ class Game_menu{
         System.out.println(saved_players);
 
     }
+
     public void exit_game()
     {
 
     }
+
     public void view_hall_of_fame()
     {
 
     }
+
     public void change_settings()
     {
 
     }
+
      class Settings
     {
         private final String about="About Game";
