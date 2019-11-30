@@ -43,7 +43,6 @@ class Shooter_Plant extends Plant
     Shooter_Plant(){
         super();
         super.setPlant_GIF( new Image("sample/Plants vs Zombies Assets/PeaShooter.gif"));
-
         Cost=100;
     }
 
