@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 abstract class Zombies implements Character
@@ -18,6 +19,7 @@ abstract class Zombies implements Character
     private Double Speed_pts;
     protected ImageView holder=new ImageView();
     protected Timeline zt=new Timeline();
+    public static ArrayList<Zombies> All_Zombies = new ArrayList<>();
 
     public Double getSpeed_pts() {
         return Speed_pts;
@@ -53,7 +55,6 @@ abstract class Zombies implements Character
 
 }
 
-
 class fast_zombie extends Zombies {
     private final String name="Bolt";
 
@@ -64,13 +65,13 @@ class fast_zombie extends Zombies {
     fast_zombie(GridPane gridPane)
     {
 
-        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/Conehead_Zombie.gif"));
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/FastZombie.gif"));
         super.holder.setOnMouseClicked(event ->
         {
             gridPane.getChildren().remove(super.holder);
         });
         super.holder.setFitWidth(60);
-        super.holder.setFitHeight(60);
+        super.holder.setFitHeight(45);
         Random rno=new Random();
         int col=rno.nextInt(3)+12;
         int row=rno.nextInt(5)+4;
@@ -79,7 +80,7 @@ class fast_zombie extends Zombies {
         super.holder.toFront();
         super.zt.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
-                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+                new KeyFrame(Duration.seconds(60), new KeyValue(super.holder.translateXProperty(),-1000 ))
         );
         super.zt.play();
     }
@@ -105,8 +106,8 @@ class Normal_zombie extends Zombies{
         {
             gridPane.getChildren().remove(super.holder);
         });
-        super.holder.setFitWidth(60);
-        super.holder.setFitHeight(60);
+        super.holder.setFitWidth(50);
+        super.holder.setFitHeight(45);
         Random rno=new Random();
         int col=rno.nextInt(3)+12;
         int row=rno.nextInt(5)+4;
@@ -114,7 +115,7 @@ class Normal_zombie extends Zombies{
         super.holder.toFront();
         super.zt.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
-                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+                new KeyFrame(Duration.seconds(80), new KeyValue(super.holder.translateXProperty(),-1000 ))
         );
         super.zt.play();
     }
@@ -139,8 +140,8 @@ class Cone_zombie extends Zombies{
         {
             gridPane.getChildren().remove(super.holder);
         });
-        super.holder.setFitWidth(60);
-        super.holder.setFitHeight(60);
+        super.holder.setFitWidth(85);
+        super.holder.setFitHeight(45);
         Random rno=new Random();
         int col=rno.nextInt(3)+12;
         int row=rno.nextInt(5)+4;
@@ -148,7 +149,7 @@ class Cone_zombie extends Zombies{
         super.holder.toFront();
         super.zt.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
-                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+                new KeyFrame(Duration.seconds(80), new KeyValue(super.holder.translateXProperty(),-1000 ))
         );
         super.zt.play();
     }
@@ -167,13 +168,13 @@ class Boss_Zombie extends Zombies{
     Boss_Zombie(GridPane gridPane)
     {
 
-        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/Credits Button.png"));
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/BossZombies.gif"));
         super.holder.setOnMouseClicked(event ->
         {
             gridPane.getChildren().remove(super.holder);
         });
-        super.holder.setFitWidth(60);
-        super.holder.setFitHeight(60);
+        super.holder.setFitWidth(80);
+        super.holder.setFitHeight(45);
         Random rno=new Random();
         int col=rno.nextInt(3)+12;
         int row=rno.nextInt(5)+4;
@@ -181,7 +182,7 @@ class Boss_Zombie extends Zombies{
         super.holder.toFront();
         super.zt.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
-                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+                new KeyFrame(Duration.seconds(80), new KeyValue(super.holder.translateXProperty(),-1000 ))
         );
         super.zt.play();
     }
@@ -194,22 +195,21 @@ class Boss_Zombie extends Zombies{
 
     }
 }
-
-class Wolf_Zombies extends Zombies{
-    private final String name="Woooooooooooolf";
+class Football_Zombie extends Zombies{
+    private final String name="Fooooooooooootball";
     public String getName() {
         return name;
     }
-    Wolf_Zombies(GridPane gridPane)
+    Football_Zombie(GridPane gridPane)
     {
 
-        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/Go back button.png"));
+        super.holder.setImage(new Image("sample/Plants vs Zombies Assets/zombie_football.gif"));
         super.holder.setOnMouseClicked(event ->
         {
             gridPane.getChildren().remove(super.holder);
         });
-        super.holder.setFitWidth(60);
-        super.holder.setFitHeight(60);
+        super.holder.setFitWidth(50);
+        super.holder.setFitHeight(45);
         Random rno=new Random();
         int col=rno.nextInt(3)+12;
         int row=rno.nextInt(5)+4;
@@ -217,7 +217,7 @@ class Wolf_Zombies extends Zombies{
         super.holder.toFront();
         super.zt.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(0), new KeyValue(super.holder.translateXProperty(),1000)),
-                new KeyFrame(Duration.seconds(27), new KeyValue(super.holder.translateXProperty(),-1000 ))
+                new KeyFrame(Duration.seconds(80), new KeyValue(super.holder.translateXProperty(),-1000 ))
         );
         super.zt.play();
     }
@@ -250,7 +250,7 @@ class Zombie_Factory
         }
         else if (type == 4)
         {
-            return new Wolf_Zombies(gridPane);
+            return new Football_Zombie(gridPane);
         }
         else if (type == 5)
         {

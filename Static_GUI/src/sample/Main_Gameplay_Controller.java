@@ -128,9 +128,9 @@ public class Main_Gameplay_Controller implements Initializable {
     public void Drop_Sun_token() {
         Token_Factory token_factory = new Token_Factory();
         Timeline sun_token = new Timeline(
-                new KeyFrame(Duration.seconds(40), e -> token_factory.create_token(Grid_Pane, 1)),
-                new KeyFrame(Duration.seconds(80), e -> token_factory.create_token(Grid_Pane, 1)),
-                new KeyFrame(Duration.seconds(120), e -> token_factory.create_token(Grid_Pane, 1))
+                new KeyFrame(Duration.seconds(10), e -> token_factory.create_token(Grid_Pane, 1)),
+                new KeyFrame(Duration.seconds(20), e -> token_factory.create_token(Grid_Pane, 1)),
+                new KeyFrame(Duration.seconds(30), e -> token_factory.create_token(Grid_Pane, 1))
         );
 
         sun_token.setCycleCount(Animation.INDEFINITE);
@@ -145,7 +145,6 @@ public class Main_Gameplay_Controller implements Initializable {
         sun_token_monitor.setCycleCount(Animation.INDEFINITE);
         sun_token_monitor.play();
     }
-
 
     private void shoot_peas(GridPane Grid_pane,int col, int row) {
         Timeline Pea_shots_timeline = new Timeline(
@@ -279,7 +278,7 @@ public class Main_Gameplay_Controller implements Initializable {
                             }else if (Selector == 2) {
 
                                 Timeline sun_token_sunflower = new Timeline(
-                                        new KeyFrame(Duration.seconds(15), e -> {
+                                        new KeyFrame(Duration.seconds(45), e -> {
                                             set_Sun_on_SunFlower(putter);
                                         })
                                 );
