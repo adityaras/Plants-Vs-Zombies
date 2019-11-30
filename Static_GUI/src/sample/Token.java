@@ -27,7 +27,7 @@ class Sun_Token extends Token
         holder.setOnMouseClicked(event ->
         {
             gridPane.getChildren().remove(holder);
-            super.sun_token_counter+=50;
+            sun_token_counter+=10;
         });
         holder.setFitWidth(30);
         holder.setFitHeight(30);
