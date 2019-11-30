@@ -21,7 +21,7 @@ class BackEnd
 }
 interface Character extends Scene_Elements
 {
-    public void action();
+    public void action(GridPane Grid_pane, int col, int row);
 }
 
 class Narrator implements Scene_Elements
@@ -38,7 +38,7 @@ public void dig()
 }
 
     @Override
-    public void action() {
+    public void action(GridPane Grid_pane, int col, int row) {
 
     }
 }
@@ -244,7 +244,7 @@ class Lawnmower implements Character
     }
 
     @Override
-    public void action() {
+    public void action(GridPane Grid_pane, int col, int row) {
 
     }
 }

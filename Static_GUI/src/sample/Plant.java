@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
@@ -7,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -34,17 +36,20 @@ abstract class Plant implements Character
 
         All_Plants.add(this);
     }
-    @Override
-    public void action() {
 
+    @Override
+    public void action(GridPane Grid_pane, int col, int row) {
+        //here nothing happens
     }
+
     public void setPlant_GIF(Image plant_GIF) {
         Plant_GIF = plant_GIF;
+        Plant_View=new ImageView();
         Plant_View.setImage(plant_GIF);
+        Plant_View.setFitWidth(40);
+        Plant_View.setFitHeight(50);
     }
-    public ImageView getPlant_View() {
-        return Plant_View;
-    }
+    public ImageView getPlant_View() { return Plant_View; }
 }
 
 
@@ -58,7 +63,7 @@ class Shooter_Plant extends Plant
 
     Shooter_Plant(int c, int r){
         super(c,r);
-        super.setPlant_GIF( new Image("sample/Plants vs Zombies Assets/PeaShooter.gif"));
+        setPlant_GIF( new Image("sample/Plants vs Zombies Assets/PeaShootera.gif"));
         bullet_Image=new Image("sample/Plants vs Zombies Assets/ProjectilePea.png");
         Cost=100;
     }
@@ -96,8 +101,8 @@ class Shooter_Plant extends Plant
 
     private final ChangeListener<Number> checkIntersection = (ob, n, n1) -> {
         try {
-            for(Zombies Zombie:All_Zombies) {
-                if (Bullet_Holder.getBoundsInParent().intersects(Zombie.getBoundsInParent())) {
+            for(Zombies Zombie:Zombies.All_Zombies) {
+                if (Bullet_Holder.getBoundsInParent().intersects(Zombie.getHolder().getBoundsInParent())) {
                     System.out.println("Detected");
                     Bullet_Holder.setVisible(false);
                 }
@@ -122,34 +127,46 @@ class Token_Producing_Plant extends Plant
     private final String name="Sunflower";
     private Double health_points;
     private Double Experience_points;
+    private ImageView Sun_Token_Holder;
 
     Token_Producing_Plant(int column, int my_row) {
         super(column, my_row);
+        setPlant_GIF(new Image("sample/Plants vs Zombies Assets/sun_flower.gif"));
     }
 
     @Override
-    public void action() {
+    public void action(GridPane Grid_pane, int col, int row) {
+        Timeline sun_token_sunflower = new Timeline(
+                new KeyFrame(Duration.seconds(15), e -> {
+                    set_Sun_on_SunFlower(col,row);
+                })
+        );
+
+        sun_token_sunflower.setCycleCount(Animation.INDEFINITE);
+        sun_token_sunflower.play();
+    }
+
+    public void set_Sun_on_SunFlower(int c,int r) {
+        Sun_Token_Holder = new ImageView();
+        Sun_Token_Holder.setImage(new Image("sample/Plants vs Zombies Assets/sun.gif"));
+        Sun_Token_Holder.setPreserveRatio(true);
+        Sun_Token_Holder.setFitHeight(35);
+        Sun_Token_Holder.setX(50);
+        Sun_Token_Holder.setFitWidth(35);
+
+        Lawn.Grid.Pane.add(Sun_Token_Holder,c,r);
+        Sun_Token_Holder.toFront();
+
+        Sun_Token_Holder.setOnMouseClicked(event ->
+        {
+            Lawn.Grid.Pane.getChildren().remove(Sun_Token_Holder);
+            Token.sun_token_counter += 50;
+        });
 
     }
 
     //setters and getters
-
-    public static void setCost(int cost) {
-        Cost = cost;
-    }
-    public Double getHealth_pts() {
-        return health_points;
-    }
-    public static int getCost() { return Cost; }
-    public Double getExperience_points() {
-        return Experience_points;
-    }
-    public void setExperience_points(Double experience_points) {
-        Experience_points = experience_points;
-    }
-    public void setHealth_points(Double health_points) {
-        this.health_points = health_points;
-    }
+    static int getCost() { return Cost; }
 }
 
 class Barrier_Plant extends Plant {
@@ -163,7 +180,7 @@ class Barrier_Plant extends Plant {
     }
 
     @Override
-    public void action() {
+    public void action(GridPane Grid_pane, int col, int row) {
 
     }
 
@@ -238,7 +255,7 @@ class Bomb_Plant extends Plant {
     }
 
     @Override
-    public void action() {
+    public void action(GridPane Grid_pane, int col, int row) {
 
     }
     public void use_ability()
@@ -267,7 +284,7 @@ class Special_Plant extends Plant {
     }
 
     @Override
-    public void action() {
+    public void action(GridPane Grid_pane, int col, int row) {
 
     }
     public void use_ability()

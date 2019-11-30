@@ -17,9 +17,10 @@ public class Lawn {
     private static int Selector;
     private static Plant Active_Plant;
 
+    public GridPane Pane;
     public static Lawn Grid;
 
-    private static void make_lawn(GridPane Grid_Pane){
+    public static void make_lawn(GridPane Grid_Pane){
 
         if(Lawn.Grid==null) Lawn.Grid=new Lawn(Grid_Pane);
     }
@@ -28,7 +29,9 @@ public class Lawn {
         Selector = selector;
     }
 
+
     public Lawn(GridPane Grid_Pane){
+        Pane=Grid_Pane;
         for (int row = 4; row < 9; row++) {
             StackPane Image_Holder = null;
             for (int col = 0; col < 10; col++) {
@@ -50,27 +53,14 @@ public class Lawn {
                         //setting which one is the Active_Plant
                         Active_Plant=Plant_Factory.make_plant(Selector,fcol,frow);
 
+                        if(Active_Plant==null) System.out.println("Active_Plant is null");
+
 
                         if (putter.getChildren().isEmpty()) {
-
+                            if(Active_Plant==null) System.out.println("\n\n\n\n\n\nActive_Plant is null\n\n\n\n\n\n\n\n");
+                            if(putter==null) System.out.println("\n\n\n\n\n\n\nputter is null\n\n\n\n\n\n\n\n\n");
                             putter.getChildren().addAll(Active_Plant.getPlant_View()); //adding the selected plant to Stack_pane
-                            Active_Plant.action();
-
-                            if (Selector == 1) {
-                                shoot_peas(Grid_Pane, fcol, frow);
-                                putter.toFront();
-
-                            } else if (Selector == 2) {
-
-                                Timeline sun_token_sunflower = new Timeline(
-                                        new KeyFrame(Duration.seconds(15), e -> {
-                                            set_Sun_on_SunFlower(putter);
-                                        })
-                                );
-
-                                sun_token_sunflower.setCycleCount(Animation.INDEFINITE);
-                                sun_token_sunflower.play();
-                            }
+                            Active_Plant.action(Grid_Pane, fcol,frow);
 
                             Selector = 0;
                         }

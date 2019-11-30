@@ -54,23 +54,6 @@ public class Main_Gameplay_Controller implements Initializable {
     @FXML
     public Text sun_token_monitor;
 
-    private boolean flag = true;
-    public static ImageView Bullet_Holder;
-    private ImageView Sun_Token_Holder;
-    private Timeline scroll_pane = new Timeline();
-    private Timeline scroll_pane_reset = new Timeline();
-
-
-    public void scroll_pane_to_show_zombies() {
-        if (flag) {
-            scroll_pane.play();
-            scroll_pane.setOnFinished((e) -> {
-                scroll_pane_reset.play();
-                flag = false;
-            });
-        }
-    }
-
     private Image PeaShooterGIF = new Image("sample/Plants vs Zombies Assets/PeaShootera.gif");
     private Image SunflowerGIF = new Image("sample/Plants vs Zombies Assets/sun_flower.gif");
     private Image PeaShooter = new Image("sample/Plants vs Zombies Assets/PeashooterSeed.PNG.png");
@@ -81,11 +64,18 @@ public class Main_Gameplay_Controller implements Initializable {
     private Image options = new Image("sample/Plants vs Zombies Assets/options.png");
     private Image options_pressed = new Image("sample/Plants vs Zombies Assets/options_pressed.png");
 
+    private boolean flag = true;
+    public static ImageView Bullet_Holder;
+    private ImageView Sun_Token_Holder;
+    private Timeline scroll_pane = new Timeline();
+    private Timeline scroll_pane_reset = new Timeline();
+
     private static TranslateTransition zombie_mov_1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Place_Plants();
 
         if (!Set_Ownership_Flag) {
             options_stage.initOwner(Controller.Game_Play_Stage);
@@ -95,9 +85,11 @@ public class Main_Gameplay_Controller implements Initializable {
 
         Play_Progress_Bar();
         Play_Scroll_Animation();
-        move_zombies();
+
         Drop_Sun_token();
-        Place_Plants();
+
+
+        move_zombies();
 
     }
 
@@ -128,9 +120,9 @@ public class Main_Gameplay_Controller implements Initializable {
     public void Drop_Sun_token() {
         Token_Factory token_factory = new Token_Factory();
         Timeline sun_token = new Timeline(
-                new KeyFrame(Duration.seconds(10), e -> token_factory.create_token(Grid_Pane, 1)),
-                new KeyFrame(Duration.seconds(20), e -> token_factory.create_token(Grid_Pane, 1)),
-                new KeyFrame(Duration.seconds(30), e -> token_factory.create_token(Grid_Pane, 1))
+                new KeyFrame(Duration.seconds(40), e -> token_factory.create_token(Grid_Pane, 1)),
+                new KeyFrame(Duration.seconds(80), e -> token_factory.create_token(Grid_Pane, 1)),
+                new KeyFrame(Duration.seconds(120), e -> token_factory.create_token(Grid_Pane, 1))
         );
 
         sun_token.setCycleCount(Animation.INDEFINITE);
@@ -146,23 +138,24 @@ public class Main_Gameplay_Controller implements Initializable {
         sun_token_monitor.play();
     }
 
-    private void shoot_peas(GridPane Grid_pane,int col, int row) {
+
+    private void shoot_peas(GridPane Grid_pane, int col, int row) {
         Timeline Pea_shots_timeline = new Timeline(
-                new KeyFrame(Duration.millis(3100), event -> Shoot_a_new_pea(Grid_pane,col,row))
+                new KeyFrame(Duration.millis(3100), event -> Shoot_a_new_pea(Grid_pane, col, row))
         );
         Pea_shots_timeline.setCycleCount(Timeline.INDEFINITE);
         Pea_shots_timeline.play();
     }
 
-    private void Shoot_a_new_pea(GridPane Grid_pane,int col, int row){
+    private void Shoot_a_new_pea(GridPane Grid_pane, int col, int row) {
         System.out.println("this is being called");
-        TranslateTransition pea_shot=new TranslateTransition();
-        Bullet_Holder=new ImageView(Pea_Bullet);
+        TranslateTransition pea_shot = new TranslateTransition();
+        Bullet_Holder = new ImageView(Pea_Bullet);
         Bullet_Holder.setVisible(true);
         Bullet_Holder.setFitWidth(20);
         Bullet_Holder.setFitHeight(20);
         System.out.println("I did it !");
-        Grid_pane.add(Bullet_Holder,col,row);
+        Grid_pane.add(Bullet_Holder, col, row);
         pea_shot.setNode(Bullet_Holder);
         pea_shot.setByX(1000);
         //pea_shot.setCycleCount(Timeline.INDEFINITE);
@@ -172,29 +165,28 @@ public class Main_Gameplay_Controller implements Initializable {
         pea_shot.play();
     }
 
-    private final ChangeListener<Number> checkIntersection = (ob, n, n1)->{
-        try{
-            if(Bullet_Holder.getBoundsInParent().intersects(Zombie1.getBoundsInParent())){
+    private final ChangeListener<Number> checkIntersection = (ob, n, n1) -> {
+        try {
+            if (Bullet_Holder.getBoundsInParent().intersects(Zombie1.getBoundsInParent())) {
                 System.out.println("Detected");
                 Bullet_Holder.setVisible(false);
             }
             //System.out.println("pea -----> "+n1.doubleValue()+"  Zombie = "+Zombie1.getBoundsInParent().getMinX());
-        }
-        catch (NullPointerException e){
-            System.out.println("______");
+        } catch (NullPointerException e) {
+            System.out.println("__");
         }
     };
 
-    private final ChangeListener<Number> check_Zombie_Plant_Intersection = (ob, n, n1)->{
-        if(My_Plant==null){
+    private final ChangeListener<Number> check_Zombie_Plant_Intersection = (ob, n, n1) -> {
+        if (My_Plant == null) {
             System.out.println("Plant is null");
             return;
         }
-        if(Zombie1==null){
+        if (Zombie1 == null) {
             System.out.println("Zombie is null");
             return;
         }
-        if (Zombie1.getBoundsInParent().intersects(My_Plant.getParent().getBoundsInParent())){
+        if (Zombie1.getBoundsInParent().intersects(My_Plant.getParent().getBoundsInParent())) {
             System.out.println("\n\n\nDETECTED ZOMBIE\n\n\n");
             zombie_mov_1.pause();
         }
@@ -210,7 +202,6 @@ public class Main_Gameplay_Controller implements Initializable {
         zombie_mov_1.setByX(-1000);
         zombie_mov_1.setDuration(Duration.seconds(100));
         zombie_mov_1.play();
-
         TranslateTransition zombie_mov_2 = new TranslateTransition();
         Zombie2.setFitWidth(220);
         Zombie2.setFitWidth(220);
@@ -218,81 +209,22 @@ public class Main_Gameplay_Controller implements Initializable {
         zombie_mov_2.setByX(-1000);
         zombie_mov_2.setDuration(Duration.seconds(100));
         zombie_mov_2.play();
-
         Zombie1.translateXProperty().addListener(check_Zombie_Plant_Intersection);
         */
 
-        Zombie_Factory factory=new Zombie_Factory();
+        Zombie_Factory factory = new Zombie_Factory();
         Timeline zombie_mover = new Timeline(
-                new KeyFrame(Duration.seconds(5),e -> factory.create_zombie(Grid_Pane)),
-                new KeyFrame(Duration.seconds(8),e -> factory.create_zombie(Grid_Pane))
+                new KeyFrame(Duration.seconds(5), e -> factory.create_zombie(Grid_Pane)),
+                new KeyFrame(Duration.seconds(8), e -> factory.create_zombie(Grid_Pane))
         );
         zombie_mover.setCycleCount(Animation.INDEFINITE);
         zombie_mover.play();
     }
 
     public void Place_Plants() {
-        for (int row = 4; row < 9; row++) {
-            StackPane Image_Holder = null;
-            for (int col = 0; col < 10; col++) {
-                Image_Holder = new StackPane();
 
-                Grid_Pane.add(Image_Holder, col, row);
+        Lawn.make_lawn(Grid_Pane);
 
-                final int frow = row;
-                final int fcol = col;
-
-                Image_Holder.setOnMouseClicked((MouseEvent e1) -> {
-
-                    StackPane putter = (StackPane) e1.getSource();
-
-                    //selector is set through injected functions in the fxml
-
-                    if (Selector > 0 && Selector < 6) {
-
-                        My_Plant = new ImageView();
-                        My_Plant.setFitHeight(60);
-                        My_Plant.setFitWidth(50);
-
-                        if (Selector == 1 && !putter.getChildren().contains(My_Plant)) {
-                            Token.sun_token_counter -= 100;
-                            My_Plant.setImage(PeaShooterGIF);
-                            PeaShooter_Seed.setImage(PeaShooter);
-
-                        } else if (Selector == 2 && !putter.getChildren().contains(My_Plant)) {
-                            My_Plant.setImage(SunflowerGIF);
-                            Sunflower_Seed.setImage(SunFlower);
-                            Token.sun_token_counter -= 50;
-
-                        }
-
-
-                        if (putter.getChildren().isEmpty()) {
-
-                            putter.getChildren().addAll(My_Plant); //adding the selected plant to Stack_pane
-
-                            if (Selector == 1) {
-                                shoot_peas(Grid_Pane,fcol,frow);
-                                putter.toFront();
-
-                            }else if (Selector == 2) {
-
-                                Timeline sun_token_sunflower = new Timeline(
-                                        new KeyFrame(Duration.seconds(45), e -> {
-                                            set_Sun_on_SunFlower(putter);
-                                        })
-                                );
-
-                                sun_token_sunflower.setCycleCount(Animation.INDEFINITE);
-                                sun_token_sunflower.play();
-                            }
-
-                            Selector = 0;
-                        }
-                    }
-                });
-            }
-        }
     }
 
     public void Play_Progress_Bar() {
@@ -343,21 +275,33 @@ public class Main_Gameplay_Controller implements Initializable {
 
     @FXML
     public void Peaseedselected() {
-        if (Token.sun_token_counter >= 100) {
+        if (Token.sun_token_counter >= Shooter_Plant.getCost()) {
             PeaShooter_Seed.setImage(PeaShooterSelected);
-            Selector = 1;
-
+            Lawn.Grid.setSelector(1);
         }
     }
 
     @FXML
     public void SunflowerSeedSelected() {
-        if (Token.sun_token_counter >= 50) {
+        if (Token.sun_token_counter >= Token_Producing_Plant.getCost()) {
             Sunflower_Seed.setImage(SunFlowerSelected);
-            Selector = 2;
+            Lawn.Grid.setSelector(2);
         }
     }
 
+    public void All_Deselect(){
+        //deselect all the plants , i.e set all seeds to normal
 
 
+    }
+
+    public void scroll_pane_to_show_zombies() {
+        if (flag) {
+            scroll_pane.play();
+            scroll_pane.setOnFinished((e) -> {
+                scroll_pane_reset.play();
+                flag = false;
+            });
+        }
+    }
 }
