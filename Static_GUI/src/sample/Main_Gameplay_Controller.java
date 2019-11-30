@@ -2,15 +2,12 @@ package sample;
 
 import javafx.animation.*;
 import javafx.beans.value.ChangeListener;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,8 +15,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -27,23 +22,16 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Time;
 import java.util.ResourceBundle;
-import javafx.scene.paint.Color;
-import sun.applet.Main;
+
 
 
 public class Main_Gameplay_Controller implements Initializable {
 
     private int Selector = 0;
     private static Boolean Set_Ownership_Flag = false;
-
     static Stage options_stage = new Stage(StageStyle.TRANSPARENT);
 
-    private int temp_row;
-    private int temp_col;
-
-    public ImageView Bullet_View;
 
     @FXML
     public ImageView Zombie1;
@@ -67,7 +55,7 @@ public class Main_Gameplay_Controller implements Initializable {
     public Text sun_token_monitor;
 
     private boolean flag = true;
-    private ImageView Bullet_Holder;
+    public static ImageView Bullet_Holder;
     private ImageView Sun_Token_Holder;
     private Timeline scroll_pane = new Timeline();
     private Timeline scroll_pane_reset = new Timeline();
@@ -106,32 +94,11 @@ public class Main_Gameplay_Controller implements Initializable {
         }   //setting the modality and ownership of options stage.
 
         Play_Progress_Bar();
-
         Play_Scroll_Animation();
-
         move_zombies();
-
         Drop_Sun_token();
-
         Place_Plants();
 
-    }
-
-    @FXML
-    public void Peaseedselected() {
-        if (Token.sun_token_counter >= 100) {
-            PeaShooter_Seed.setImage(PeaShooterSelected);
-            Selector = 1;
-
-        }
-    }
-
-    @FXML
-    public void SunflowerSeedSelected() {
-        if (Token.sun_token_counter >= 50) {
-            Sunflower_Seed.setImage(SunFlowerSelected);
-            Selector = 2;
-        }
     }
 
     public void set_Sun_on_SunFlower(StackPane putter) {
@@ -169,7 +136,7 @@ public class Main_Gameplay_Controller implements Initializable {
         sun_token.setCycleCount(Animation.INDEFINITE);
         sun_token.play();
 
-        //seperate Timeline to Update Monitor
+        //separate Timeline to Update Monitor
         Timeline sun_token_monitor = new Timeline(
                 new KeyFrame(Duration.ZERO, event -> setSun_token_monitor()),
                 new KeyFrame(Duration.millis(1), event -> setSun_token_monitor())
@@ -178,6 +145,7 @@ public class Main_Gameplay_Controller implements Initializable {
         sun_token_monitor.setCycleCount(Animation.INDEFINITE);
         sun_token_monitor.play();
     }
+
 
     private void shoot_peas(GridPane Grid_pane,int col, int row) {
         Timeline Pea_shots_timeline = new Timeline(
@@ -234,6 +202,8 @@ public class Main_Gameplay_Controller implements Initializable {
     };
 
     private void move_zombies() {
+
+        /*
         zombie_mov_1 = new TranslateTransition();
         zombie_mov_1.setNode(Zombie1);
         Zombie1.setFitWidth(220);
@@ -251,6 +221,15 @@ public class Main_Gameplay_Controller implements Initializable {
         zombie_mov_2.play();
 
         Zombie1.translateXProperty().addListener(check_Zombie_Plant_Intersection);
+        */
+
+        Zombie_Factory factory=new Zombie_Factory();
+        Timeline zombie_mover = new Timeline(
+                new KeyFrame(Duration.seconds(5),e -> factory.create_zombie(Grid_Pane)),
+                new KeyFrame(Duration.seconds(8),e -> factory.create_zombie(Grid_Pane))
+        );
+        zombie_mover.setCycleCount(Animation.INDEFINITE);
+        zombie_mover.play();
     }
 
     public void Place_Plants() {
@@ -362,5 +341,24 @@ public class Main_Gameplay_Controller implements Initializable {
         options_stage.showAndWait();
 
     }
+
+    @FXML
+    public void Peaseedselected() {
+        if (Token.sun_token_counter >= 100) {
+            PeaShooter_Seed.setImage(PeaShooterSelected);
+            Selector = 1;
+
+        }
+    }
+
+    @FXML
+    public void SunflowerSeedSelected() {
+        if (Token.sun_token_counter >= 50) {
+            Sunflower_Seed.setImage(SunFlowerSelected);
+            Selector = 2;
+        }
+    }
+
+
 
 }
