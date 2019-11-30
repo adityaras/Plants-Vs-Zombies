@@ -11,7 +11,7 @@ import javafx.util.Duration;
 import java.util.Random;
 
 public class Token implements Scene_Elements {
-    public static Integer sun_token_counter=50;
+    public static Integer sun_token_counter=500;
 }
 
 class Sun_Token extends Token
