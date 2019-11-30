@@ -106,13 +106,9 @@ public class Main_Gameplay_Controller implements Initializable {
         }   //setting the modality and ownership of options stage.
 
         Play_Progress_Bar();
-
         Play_Scroll_Animation();
-
         move_zombies();
-
         Drop_Sun_token();
-
         Place_Plants();
 
     }
@@ -179,13 +175,30 @@ public class Main_Gameplay_Controller implements Initializable {
         sun_token_monitor.play();
     }
 
+<<<<<<< HEAD
     private void shoot_peas(GridPane Grid_pane,int col, int row) {
         Timeline Pea_shots_timeline = new Timeline(
                 new KeyFrame(Duration.millis(3100), event -> Shoot_a_new_pea(Grid_pane,col,row))
+=======
+    private void shoot_pea(ImageView Bullet_Holder) {
+        //System.out.println("Yup the function is called");
+        TranslateTransition pea_shot = new TranslateTransition();
+        Bullet_Holder.setX(temp_X);
+        pea_shot.setNode(Bullet_Holder);
+        pea_shot.setToX(temp_X+1000);
+        pea_shot.setDuration(Duration.seconds(3));
+        //pea_shot.setCycleCount(Timeline.INDEFINITE);
+
+
+        Timeline pea_shot_Timeline=new Timeline(
+                new KeyFrame(Duration.millis(0), e-> Play_pea_shot(pea_shot)),
+                new KeyFrame(Duration.millis(2990), e-> Set_Bullet_visible(pea_shot))
+>>>>>>> master
         );
         Pea_shots_timeline.setCycleCount(Timeline.INDEFINITE);
         Pea_shots_timeline.play();
     }
+
 
     private void Shoot_a_new_pea(GridPane Grid_pane,int col, int row){
         System.out.println("this is being called");
@@ -196,14 +209,19 @@ public class Main_Gameplay_Controller implements Initializable {
         Bullet_Holder.setFitHeight(20);
         System.out.println("I did it !");
         Grid_pane.add(Bullet_Holder,col,row);
-        pea_shot.setNode(Bullet_Holder);
-        pea_shot.setByX(1000);
-        //pea_shot.setCycleCount(Timeline.INDEFINITE);
-        Bullet_Holder.translateXProperty().addListener(checkIntersection);
-        //Bullet_Holder.xProperty().addListener();
-        pea_shot.setDuration(Duration.seconds(3));
-        pea_shot.play();
+
+
+    //the two functions below are made for testing purposes
+    private void Set_Bullet_visible(TranslateTransition pea_shot){
+        Bullet_Holder.setVisible(true);
+        System.out.println("I DID IT");
+        Play_pea_shot(pea_shot);
     }
+
+    private  void Play_pea_shot(TranslateTransition pea_shot){
+        Bullet_Holder.toFront();
+        Bullet_Holder.setX(temp_X);
+
 
     private final ChangeListener<Number> checkIntersection = (ob, n, n1)->{
         try{
