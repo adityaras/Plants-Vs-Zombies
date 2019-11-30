@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
@@ -17,16 +18,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ResourceBundle;
-
+import javafx.scene.paint.Color;
+import sun.applet.Main;
 
 
 public class Main_Gameplay_Controller implements Initializable {
@@ -36,14 +40,17 @@ public class Main_Gameplay_Controller implements Initializable {
 
     static Stage options_stage = new Stage(StageStyle.TRANSPARENT);
 
-    private Double temp_X;
+    private int temp_row;
+    private int temp_col;
+
+    public ImageView Bullet_View;
 
     @FXML
     public ImageView Zombie1;
     @FXML
     public ImageView Zombie2;
     @FXML
-    public ImageView Plant;
+    public ImageView My_Plant;
     @FXML
     public ProgressBar pb;
     @FXML
@@ -91,6 +98,7 @@ public class Main_Gameplay_Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
         if (!Set_Ownership_Flag) {
             options_stage.initOwner(Controller.Game_Play_Stage);
             options_stage.initModality(Modality.WINDOW_MODAL);
@@ -109,6 +117,7 @@ public class Main_Gameplay_Controller implements Initializable {
 
     }
 
+    @FXML
     public void Peaseedselected() {
         if (Token.sun_token_counter >= 100) {
             PeaShooter_Seed.setImage(PeaShooterSelected);
@@ -117,6 +126,7 @@ public class Main_Gameplay_Controller implements Initializable {
         }
     }
 
+    @FXML
     public void SunflowerSeedSelected() {
         if (Token.sun_token_counter >= 50) {
             Sunflower_Seed.setImage(SunFlowerSelected);
@@ -169,66 +179,62 @@ public class Main_Gameplay_Controller implements Initializable {
         sun_token_monitor.play();
     }
 
-    private void shoot_pea(ImageView Bullet_Holder) {
-        //System.out.println("Yup the function is called");
-        TranslateTransition pea_shot = new TranslateTransition();
-        Bullet_Holder.setX(temp_X);
-        pea_shot.setNode(Bullet_Holder);
-        pea_shot.setToX(temp_X+1000);
-        pea_shot.setDuration(Duration.seconds(3));
-        //pea_shot.setCycleCount(Timeline.INDEFINITE);
-
-
-        Timeline pea_shot_Timeline=new Timeline(
-                new KeyFrame(Duration.millis(0), e-> Play_pea_shot(pea_shot)),
-                new KeyFrame(Duration.millis(2990), e-> Set_Bullet_visible())
+    private void shoot_peas(GridPane Grid_pane,int col, int row) {
+        Timeline Pea_shots_timeline = new Timeline(
+                new KeyFrame(Duration.millis(3100), event -> Shoot_a_new_pea(Grid_pane,col,row))
         );
-
-        Bullet_Holder.translateXProperty().addListener(checkIntersection);
-
-        pea_shot_Timeline.setCycleCount(Timeline.INDEFINITE);
-        pea_shot_Timeline.play();
-
+        Pea_shots_timeline.setCycleCount(Timeline.INDEFINITE);
+        Pea_shots_timeline.play();
     }
 
-
-    //the two functions below are made for testing pursposes
-    private void Set_Bullet_visible(){
+    private void Shoot_a_new_pea(GridPane Grid_pane,int col, int row){
+        System.out.println("this is being called");
+        TranslateTransition pea_shot=new TranslateTransition();
+        Bullet_Holder=new ImageView(Pea_Bullet);
         Bullet_Holder.setVisible(true);
-        System.out.println("I DID IT");
-    }
-
-    private  void Play_pea_shot(TranslateTransition pea_shot){
-        Bullet_Holder.toFront();
-        Bullet_Holder.setX(temp_X);
+        Bullet_Holder.setFitWidth(20);
+        Bullet_Holder.setFitHeight(20);
+        System.out.println("I did it !");
+        Grid_pane.add(Bullet_Holder,col,row);
         pea_shot.setNode(Bullet_Holder);
-        pea_shot.setToX(temp_X+1000);
+        pea_shot.setByX(1000);
+        //pea_shot.setCycleCount(Timeline.INDEFINITE);
+        Bullet_Holder.translateXProperty().addListener(checkIntersection);
+        //Bullet_Holder.xProperty().addListener();
         pea_shot.setDuration(Duration.seconds(3));
         pea_shot.play();
-        System.out.println("I played");
     }
 
-
-
     private final ChangeListener<Number> checkIntersection = (ob, n, n1)->{
-        if (Bullet_Holder.getBoundsInParent().intersects(Zombie1.getBoundsInParent())){
-            if(Bullet_Holder.isVisible()) {
-                System.out.println("Zombie Hit By Pea");
-                //Bullet_Holder.setVisible(false);
+        try{
+            if(Bullet_Holder.getBoundsInParent().intersects(Zombie1.getBoundsInParent())){
+                System.out.println("Detected");
+                Bullet_Holder.setVisible(false);
             }
-
+            //System.out.println("pea -----> "+n1.doubleValue()+"  Zombie = "+Zombie1.getBoundsInParent().getMinX());
+        }
+        catch (NullPointerException e){
+            System.out.println("______________");
         }
     };
 
-    /*private final ChangeListener<Number> check_Zombie_Plant_Intersection = (ob, n, n1)->{
-        if (Zombie1.getBoundsInParent().intersects(Plant.getParent().getBoundsInParent())){
+    private final ChangeListener<Number> check_Zombie_Plant_Intersection = (ob, n, n1)->{
+        if(My_Plant==null){
+            System.out.println("Plant is null");
+            return;
+        }
+        if(Zombie1==null){
+            System.out.println("Zombie is null");
+            return;
+        }
+        if (Zombie1.getBoundsInParent().intersects(My_Plant.getParent().getBoundsInParent())){
             System.out.println("\n\n\nDETECTED ZOMBIE\n\n\n");
             zombie_mov_1.pause();
         }
-    };*/
+    };
 
     private void move_zombies() {
-        TranslateTransition zombie_mov_1 = new TranslateTransition();
+        zombie_mov_1 = new TranslateTransition();
         zombie_mov_1.setNode(Zombie1);
         Zombie1.setFitWidth(220);
         Zombie1.setFitWidth(220);
@@ -244,7 +250,7 @@ public class Main_Gameplay_Controller implements Initializable {
         zombie_mov_2.setDuration(Duration.seconds(100));
         zombie_mov_2.play();
 
-        //Zombie1.translateXProperty().addListener(check_Zombie_Plant_Intersection);
+        Zombie1.translateXProperty().addListener(check_Zombie_Plant_Intersection);
     }
 
     public void Place_Plants() {
@@ -259,19 +265,24 @@ public class Main_Gameplay_Controller implements Initializable {
                 final int fcol = col;
 
                 Image_Holder.setOnMouseClicked((MouseEvent e1) -> {
+
                     StackPane putter = (StackPane) e1.getSource();
+
+                    //selector is set through injected functions in the fxml
+
                     if (Selector > 0 && Selector < 6) {
 
-                        Plant = new ImageView();
-                        Plant.setFitHeight(60);
-                        Plant.setFitWidth(50);
-                        if (Selector == 1 && !putter.getChildren().contains(Plant)) {
+                        My_Plant = new ImageView();
+                        My_Plant.setFitHeight(60);
+                        My_Plant.setFitWidth(50);
+
+                        if (Selector == 1 && !putter.getChildren().contains(My_Plant)) {
                             Token.sun_token_counter -= 100;
-                            Plant.setImage(PeaShooterGIF);
+                            My_Plant.setImage(PeaShooterGIF);
                             PeaShooter_Seed.setImage(PeaShooter);
 
-                        } else if (Selector == 2 && !putter.getChildren().contains(Plant)) {
-                            Plant.setImage(SunflowerGIF);
+                        } else if (Selector == 2 && !putter.getChildren().contains(My_Plant)) {
+                            My_Plant.setImage(SunflowerGIF);
                             Sunflower_Seed.setImage(SunFlower);
                             Token.sun_token_counter -= 50;
 
@@ -279,23 +290,15 @@ public class Main_Gameplay_Controller implements Initializable {
 
 
                         if (putter.getChildren().isEmpty()) {
-                            putter.getChildren().addAll(Plant);
+
+                            putter.getChildren().addAll(My_Plant); //adding the selected plant to Stack_pane
 
                             if (Selector == 1) {
-
-                                Bullet_Holder = new ImageView();
-                                Bullet_Holder.setImage(Pea_Bullet);
-                                Bullet_Holder.setPreserveRatio(true);
-                                Bullet_Holder.setFitWidth(20);
-                                Bullet_Holder.setFitHeight(20);
-                                Grid_Pane.add(Bullet_Holder, fcol, frow);
-                                System.out.println("pea is selected !!! row is " + frow + " col is " + fcol);
-
-                                temp_X=Bullet_Holder.getX(); //for experimenting, this can be an attribute of the plant class
-
-                                shoot_pea(Bullet_Holder);
+                                shoot_peas(Grid_Pane,fcol,frow);
                                 putter.toFront();
-                            } else if (Selector == 2) {
+
+                            }else if (Selector == 2) {
+
                                 Timeline sun_token_sunflower = new Timeline(
                                         new KeyFrame(Duration.seconds(15), e -> {
                                             set_Sun_on_SunFlower(putter);
