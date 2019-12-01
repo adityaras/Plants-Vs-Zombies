@@ -86,84 +86,13 @@ public class Main_Gameplay_Controller implements Initializable {
         Play_Progress_Bar();
         Play_Scroll_Animation();
 
-        Drop_Sun_token();
 
 
         move_zombies();
 
     }
 
-    public void set_Sun_on_SunFlower(StackPane putter) {
-        Sun_Token_Holder = new ImageView();
-        Sun_Token_Holder.setImage(new Image("sample/Plants vs Zombies Assets/sun.gif"));
-        Sun_Token_Holder.setPreserveRatio(true);
-        Sun_Token_Holder.setFitHeight(35);
-        Sun_Token_Holder.setX(50);
-        Sun_Token_Holder.setFitWidth(35);
-        if (!putter.getChildren().contains(Sun_Token_Holder)) {
-            putter.getChildren().add(Sun_Token_Holder);
-            Sun_Token_Holder.toFront();
-        }
-
-        Sun_Token_Holder.setOnMouseClicked(event ->
-        {
-            putter.getChildren().remove(Sun_Token_Holder);
-            Token.sun_token_counter += 50;
-        });
-
-    }
-
-    public void setSun_token_monitor() {
-        sun_token_monitor.setText(Token.sun_token_counter.toString());
-    }
-
-    public void Drop_Sun_token() {
-        Token_Factory token_factory = new Token_Factory();
-        Timeline sun_token = new Timeline(
-                new KeyFrame(Duration.seconds(40), e -> token_factory.create_token(Grid_Pane, 1)),
-                new KeyFrame(Duration.seconds(80), e -> token_factory.create_token(Grid_Pane, 1)),
-                new KeyFrame(Duration.seconds(120), e -> token_factory.create_token(Grid_Pane, 1))
-        );
-
-        sun_token.setCycleCount(Animation.INDEFINITE);
-        sun_token.play();
-
-        //separate Timeline to Update Monitor
-        Timeline sun_token_monitor = new Timeline(
-                new KeyFrame(Duration.ZERO, event -> setSun_token_monitor()),
-                new KeyFrame(Duration.millis(1), event -> setSun_token_monitor())
-        );
-
-        sun_token_monitor.setCycleCount(Animation.INDEFINITE);
-        sun_token_monitor.play();
-    }
-
-
-    private void shoot_peas(GridPane Grid_pane, int col, int row) {
-        Timeline Pea_shots_timeline = new Timeline(
-                new KeyFrame(Duration.millis(3100), event -> Shoot_a_new_pea(Grid_pane, col, row))
-        );
-        Pea_shots_timeline.setCycleCount(Timeline.INDEFINITE);
-        Pea_shots_timeline.play();
-    }
-
-    private void Shoot_a_new_pea(GridPane Grid_pane, int col, int row) {
-        System.out.println("this is being called");
-        TranslateTransition pea_shot = new TranslateTransition();
-        Bullet_Holder = new ImageView(Pea_Bullet);
-        Bullet_Holder.setVisible(true);
-        Bullet_Holder.setFitWidth(20);
-        Bullet_Holder.setFitHeight(20);
-        System.out.println("I did it !");
-        Grid_pane.add(Bullet_Holder, col, row);
-        pea_shot.setNode(Bullet_Holder);
-        pea_shot.setByX(1000);
-        //pea_shot.setCycleCount(Timeline.INDEFINITE);
-        Bullet_Holder.translateXProperty().addListener(checkIntersection);
-        //Bullet_Holder.xProperty().addListener();
-        pea_shot.setDuration(Duration.seconds(3));
-        pea_shot.play();
-    }
+    
 
     private final ChangeListener<Number> checkIntersection = (ob, n, n1) -> {
         try {
@@ -214,7 +143,7 @@ public class Main_Gameplay_Controller implements Initializable {
 
         Zombie_Factory factory = new Zombie_Factory();
         Timeline zombie_mover = new Timeline(
-                new KeyFrame(Duration.seconds(5), e -> factory.create_zombie(Grid_Pane)),
+                new KeyFrame(Duration.seconds(0), e -> factory.create_zombie(Grid_Pane)),
                 new KeyFrame(Duration.seconds(8), e -> factory.create_zombie(Grid_Pane))
         );
         zombie_mover.setCycleCount(Animation.INDEFINITE);

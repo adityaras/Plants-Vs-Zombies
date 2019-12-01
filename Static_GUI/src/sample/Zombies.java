@@ -3,6 +3,8 @@ package sample;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -19,6 +21,7 @@ class Zombies implements Character
     private Double def_pts;
     private Double Health_pts;
     private Double Speed_pts;
+    private TranslateTransition Zombie_Moves;
     ImageView holder=new ImageView();
     Timeline zt=new Timeline();
     static ArrayList<Zombies> All_Zombies = new ArrayList<>();
@@ -34,23 +37,40 @@ class Zombies implements Character
         Random rno=new Random();
         int col=rno.nextInt(3)+12;
         int row=rno.nextInt(5)+4;
-        if(Lawn.Grid.Pane==null) System.out.println("Pane is null");
-        if(holder==null) System.out.println("Holder is null");
+
         Lawn.Grid.Pane.add(holder,col,row);
 
         holder.toFront();
-        zt.getKeyFrames().addAll(
+
+        Zombie_Moves=new TranslateTransition();
+        Zombie_Moves.setNode(holder);
+        Zombie_Moves.setDuration(Duration.seconds(Speed_pts));
+        Zombie_Moves.setByX(-1000);
+
+        Zombie_Moves.play();
+        /*zt.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(0), new KeyValue(holder.translateXProperty(),1000)),
-                new KeyFrame(Duration.seconds(60), new KeyValue(holder.translateXProperty(),-1000 ))
+                new KeyFrame(Duration.seconds(Speed_pts), new KeyValue(holder.translateXProperty(),-1000 ))
         );
-        zt.play();
+        zt.play();*/
     }
+
+
+    private final ChangeListener<Number> check_Zombie_Plant_Intersection = (ob, n, n1) -> {
+        for(Plant p: Plant.All_Plants) {
+            if(p==null) System.out.println("Pea is NUll");
+            if (this.getHolder().getBoundsInParent().intersects(p.getPlant_View().getParent().getBoundsInParent())) {
+                System.out.println("\n\n\nDETECTED ZOMBIE\n\n\nSTART EATING\n\n\n");
+                Zombie_Moves.pause();
+            }
+        }
+    };
 
     Zombies(){
         All_Zombies.add(this);
         Health_pts=100.0;
         def_pts=100.0;
-        Speed_pts=100.0;
+        Speed_pts=40.0;
         attack_pts=100.0;
 
     }
@@ -61,16 +81,19 @@ class Zombies implements Character
 
 
     public static void zombie_got_hit(Zombies z,Double Damage) throws ZombieKilledException {
-        Double d=Damage-z.getHealth_pts();
+        Double d=z.getHealth_pts()-Damage;
         z.setHealth_pts(d);
-        System.out.println("\n\n\nHIT\n\n\n");
-        /*if(z.Health_pts<=0) throw new ZombieKilledException(z);*/
+        //System.out.println("\n\n\nZombie_Health = "+z.getHealth_pts()+" \n\n\n");
+        if(z.Health_pts<=0) throw new ZombieKilledException(z);
     }
 
     public ImageView getHolder() { return holder; }
 
     public Double getHealth_pts() { return Health_pts; }
     public void setHealth_pts(Double health_pts) { Health_pts = health_pts; }
+
+    public void setSpeed_pts(Double speed_pts) { Speed_pts = speed_pts;
+    }
 }
 
 class fast_zombie extends Zombies {
@@ -79,6 +102,7 @@ class fast_zombie extends Zombies {
 
         set_image(new Image("sample/Plants vs Zombies Assets/FastZombie.gif"),45,60);
         place_and_move_zombie();
+        setSpeed_pts(40.0);
     }
 }
 

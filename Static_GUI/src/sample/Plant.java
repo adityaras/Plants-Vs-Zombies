@@ -29,7 +29,7 @@ abstract class Plant implements Character
     Plant(int column,int my_row){
         this.col=column;
         this.row=my_row;
-        attack_pts=30.00;
+        attack_pts=38.0;
         Health_pts=100.00;
         Speed_pts=100.00;
         def_pts=100.00;
@@ -85,7 +85,7 @@ class Shooter_Plant extends Plant
     }
 
     private void Shoot_a_new_pea(GridPane Grid_pane, int col, int row) {
-        System.out.println("this is being called");
+        //System.out.println("this is being called");
         TranslateTransition pea_shot = new TranslateTransition();
         Bullet_Holder = new ImageView(bullet_Image);
         Bullet_Holder.setVisible(true);
@@ -105,19 +105,23 @@ class Shooter_Plant extends Plant
     private final ChangeListener<Number> checkIntersection = (ob, n, n1) -> {
         try {
             for(Zombies Zombie:Zombies.All_Zombies) {
-                if (Bullet_Holder.getBoundsInParent().intersects(Zombie.getHolder().getBoundsInParent())) {
-                    System.out.println("Detected");
-                    Bullet_Holder.setVisible(false);
-                    /*Zombies.zombie_got_hit(Zombie,this.getAttack_pts());*/
+                //System.out.println("In the for loop");
+                if(Bullet_Holder.isVisible()) {
+                    if (Bullet_Holder.getBoundsInParent().intersects(Zombie.getHolder().getBoundsInParent())) {
+                        //System.out.println("\n\n\n\nDetected\n\n\n\n\n");
+                        Bullet_Holder.setVisible(false);
+                        Zombies.zombie_got_hit(Zombie, this.getAttack_pts());
+                    }
                 }
             }
             //System.out.println("pea -----> "+n1.doubleValue()+"  Zombie = "+Zombie1.getBoundsInParent().getMinX());
         } catch (NullPointerException e) {
             System.out.println("__");
-        } /*catch (ZombieKilledException z){
-            Lawn.Grid.Pane.getChildren().remove(z.Zombie);
+        } catch (ZombieKilledException z){
+
+            Lawn.Grid.Pane.getChildren().remove(z.Zombie.holder);
             Zombies.All_Zombies.remove(z.Zombie);
-        }*/
+        }
     };
 
     //setters and getters

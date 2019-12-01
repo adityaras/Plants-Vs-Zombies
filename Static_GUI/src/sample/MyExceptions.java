@@ -14,11 +14,11 @@ class PlantDiedException extends MyExceptions
 }
 
 class ZombieKilledException extends MyExceptions {
-    /*Zombies Zombie;
+    Zombies Zombie;
     ZombieKilledException(Zombies z){
         Zombie=z;
-        System.out.println("Zombie_Dead");
-    }*/
+        //System.out.println("Zombie_Dead");
+    }
 }
 
 class GamePausedException extends MyExceptions
