@@ -29,7 +29,7 @@ abstract class Plant implements Character
     Plant(int column,int my_row){
         this.col=column;
         this.row=my_row;
-        attack_pts=100.00;
+        attack_pts=30.00;
         Health_pts=100.00;
         Speed_pts=100.00;
         def_pts=100.00;
@@ -50,6 +50,8 @@ abstract class Plant implements Character
         Plant_View.setFitHeight(50);
     }
     public ImageView getPlant_View() { return Plant_View; }
+    public Double getAttack_pts(){ return attack_pts;}
+
 }
 
 
@@ -66,6 +68,7 @@ class Shooter_Plant extends Plant
         setPlant_GIF( new Image("sample/Plants vs Zombies Assets/PeaShootera.gif"));
         bullet_Image=new Image("sample/Plants vs Zombies Assets/ProjectilePea.png");
         Cost=100;
+        Token.sun_token_counter-=Cost;
     }
 
     @Override
@@ -105,12 +108,16 @@ class Shooter_Plant extends Plant
                 if (Bullet_Holder.getBoundsInParent().intersects(Zombie.getHolder().getBoundsInParent())) {
                     System.out.println("Detected");
                     Bullet_Holder.setVisible(false);
+                    /*Zombies.zombie_got_hit(Zombie,this.getAttack_pts());*/
                 }
             }
             //System.out.println("pea -----> "+n1.doubleValue()+"  Zombie = "+Zombie1.getBoundsInParent().getMinX());
         } catch (NullPointerException e) {
             System.out.println("__");
-        }
+        } /*catch (ZombieKilledException z){
+            Lawn.Grid.Pane.getChildren().remove(z.Zombie);
+            Zombies.All_Zombies.remove(z.Zombie);
+        }*/
     };
 
     //setters and getters
@@ -132,6 +139,7 @@ class Token_Producing_Plant extends Plant
     Token_Producing_Plant(int column, int my_row) {
         super(column, my_row);
         setPlant_GIF(new Image("sample/Plants vs Zombies Assets/sun_flower.gif"));
+        Token.sun_token_counter-=Cost;
     }
 
     @Override

@@ -10,60 +10,38 @@ class BackEnd
     {
         Game_menu game=new Game_menu();
     }
-    public void serialize()
-    {
+
+    public void serialize() {
 
     }
-    public void desearalize()
-    {
+    public void desearalize() {
 
     }
 }
+
 interface Character extends Scene_Elements
 {
     public void action(GridPane Grid_pane, int col, int row);
 }
 
-class Narrator implements Scene_Elements
-{
+class Narrator implements Scene_Elements {
     public void speak()
     {
 
     }
 }
-class Shovel implements Character {
-public void dig()
-{
 
-}
+class Shovel implements Character {
+    public void dig()
+    {
+
+    }
 
     @Override
     public void action(GridPane Grid_pane, int col, int row) {
 
     }
 }
-class Tile implements Scene_Elements
-{
-    private Boolean ispit=false;
-    private Character contained;
-
-    public Boolean getIspit() {
-        return ispit;
-    }
-
-    public Character getContained() {
-        return contained;
-    }
-
-    public void setContained(Character contained) {
-        this.contained = contained;
-    }
-
-    public void setIspit(Boolean ispit) {
-        this.ispit = ispit;
-    }
-}
-
 
 
 class Sun extends Weather
@@ -108,33 +86,10 @@ class Player implements Serializable, Comparable
     public int compareTo(Object o) {
         return 0;
     }
-    public void play_game(int audio_vol,int fx_vol) throws GamePausedException,GameWinnerException,PlantDiedException,ZombieKilledException {
+    public void play_game(int audio_vol,int fx_vol) {
         game.setMusic_lvl(audio_vol);
-        try {
-            throw new GamePausedException();
-        } catch (GamePausedException e) {
 
-
-        }
-        try {
-            throw new GameWinnerException();
-        } catch (GameWinnerException e)
-        {
-
-        }
-        try {
-            throw new PlantDiedException();
-        } catch (PlantDiedException e)
-        {
-
-        }
-        try {
-            throw new ZombieKilledException();
-        }
-        catch (ZombieKilledException e)
-        {
-
-    }}
+    }
     public void place_character()
     {
 
@@ -149,7 +104,7 @@ class Game implements Serializable
     private int time;
     private int no_of_sun_tokens;
     private Weather current_weather;
-    Tile lawn[][]=new Tile[6][10];//Change when you decide
+    //Tile lawn[][]=new Tile[6][10];//Change when you decide
     public void place_character()
     {
 
@@ -192,9 +147,9 @@ class Game implements Serializable
         return no_of_sun_tokens;
     }
 
-    public Tile[][] getLawn() {
+   /* public Tile[][] getLawn() {
         return lawn;
-    }
+    }*/
 
     public Weather getCurrent_weather() {
         return current_weather;
@@ -208,9 +163,9 @@ class Game implements Serializable
         this.current_weather = current_weather;
     }
 
-    public void setLawn(Tile[][] lawn) {
+    /*public void setLawn(Tile[][] lawn) {
         this.lawn = lawn;
-    }
+    }*/
 
     public void setLevel(int level) {
         this.level = level;
@@ -353,23 +308,3 @@ class Game_menu{
 
 }
 
-class MyExceptions extends Exception
-{
-
-}
-class GameWinnerException extends MyExceptions
-{
-
-}
-class PlantDiedException extends MyExceptions
-{
-
-}
-class ZombieKilledException extends MyExceptions
-{
-
-}
-class GamePausedException extends MyExceptions
-{
-
-}

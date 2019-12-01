@@ -11,7 +11,9 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.Random;
 
-abstract class Zombies implements Character
+
+
+class Zombies implements Character
 {
     private Double attack_pts;
     private Double def_pts;
@@ -27,6 +29,7 @@ abstract class Zombies implements Character
         holder.setFitHeight(h);
         holder.setFitWidth(w);
     }
+
     public void place_and_move_zombie(){
         Random rno=new Random();
         int col=rno.nextInt(3)+12;
@@ -45,12 +48,29 @@ abstract class Zombies implements Character
 
     Zombies(){
         All_Zombies.add(this);
+        Health_pts=100.0;
+        def_pts=100.0;
+        Speed_pts=100.0;
+        attack_pts=100.0;
+
     }
 
     public void action(GridPane Grid_pane, int col, int row){
 
     }
+
+
+    public static void zombie_got_hit(Zombies z,Double Damage) throws ZombieKilledException {
+        Double d=Damage-z.getHealth_pts();
+        z.setHealth_pts(d);
+        System.out.println("\n\n\nHIT\n\n\n");
+        /*if(z.Health_pts<=0) throw new ZombieKilledException(z);*/
+    }
+
     public ImageView getHolder() { return holder; }
+
+    public Double getHealth_pts() { return Health_pts; }
+    public void setHealth_pts(Double health_pts) { Health_pts = health_pts; }
 }
 
 class fast_zombie extends Zombies {

@@ -50,15 +50,11 @@ public class Lawn {
 
                     if (Selector > 0 && Selector < 6) {
 
-                        //setting which one is the Active_Plant
-                        Active_Plant=Plant_Factory.make_plant(Selector,fcol,frow);
-
-                        if(Active_Plant==null) System.out.println("Active_Plant is null");
-
-
                         if (putter.getChildren().isEmpty()) {
-                            if(Active_Plant==null) System.out.println("\n\n\n\n\n\nActive_Plant is null\n\n\n\n\n\n\n\n");
-                            if(putter==null) System.out.println("\n\n\n\n\n\n\nputter is null\n\n\n\n\n\n\n\n\n");
+
+                            //setting which one is the Active_Plant
+                            Active_Plant=Plant_Factory.make_plant(Selector,fcol,frow);
+
                             putter.getChildren().addAll(Active_Plant.getPlant_View()); //adding the selected plant to Stack_pane
                             Active_Plant.action(Grid_Pane, fcol,frow);
 
