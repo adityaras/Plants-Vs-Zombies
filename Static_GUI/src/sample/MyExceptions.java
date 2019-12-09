@@ -8,9 +8,11 @@ class GameWinnerException extends MyExceptions
 {
 
 }
-class PlantDiedException extends MyExceptions
-{
-
+class PlantDiedException extends MyExceptions {
+    public Plant plant;
+    PlantDiedException(Plant p){
+        plant=p;
+    }
 }
 
 class ZombieKilledException extends MyExceptions {

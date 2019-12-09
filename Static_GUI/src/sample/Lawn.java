@@ -53,7 +53,7 @@ public class Lawn {
                         if (putter.getChildren().isEmpty()) {
 
                             //setting which one is the Active_Plant
-                            Active_Plant=Plant_Factory.make_plant(Selector,fcol,frow);
+                            Active_Plant=Plant_Factory.make_plant(Selector,fcol,frow,putter);
 
                             putter.getChildren().addAll(Active_Plant.getPlant_View()); //adding the selected plant to Stack_pane
                             Active_Plant.action(Grid_Pane, fcol,frow);

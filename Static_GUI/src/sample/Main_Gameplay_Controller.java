@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-
 public class Main_Gameplay_Controller implements Initializable {
 
     private int Selector = 0;
@@ -85,14 +83,35 @@ public class Main_Gameplay_Controller implements Initializable {
 
         Play_Progress_Bar();
         Play_Scroll_Animation();
-
-
-
+        Drop_Sun_token();
         move_zombies();
 
     }
 
-    
+    public void setSun_token_monitor() {
+        sun_token_monitor.setText(Token.sun_token_counter.toString());
+    }
+
+    public void Drop_Sun_token() {
+        Token_Factory token_factory = new Token_Factory();
+        Timeline sun_token = new Timeline(
+                new KeyFrame(Duration.seconds(40), e -> token_factory.create_token(Grid_Pane, 1)),
+                new KeyFrame(Duration.seconds(80), e -> token_factory.create_token(Grid_Pane, 1)),
+                new KeyFrame(Duration.seconds(120), e -> token_factory.create_token(Grid_Pane, 1))
+        );
+
+        sun_token.setCycleCount(Animation.INDEFINITE);
+        sun_token.play();
+
+        //separate Timeline to Update Monitor
+        Timeline sun_token_monitor = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> setSun_token_monitor()),
+                new KeyFrame(Duration.millis(1), event -> setSun_token_monitor())
+        );
+
+        sun_token_monitor.setCycleCount(Animation.INDEFINITE);
+        sun_token_monitor.play();
+    }
 
     private final ChangeListener<Number> checkIntersection = (ob, n, n1) -> {
         try {
@@ -122,25 +141,6 @@ public class Main_Gameplay_Controller implements Initializable {
     };
 
     private void move_zombies() {
-
-        /*
-        zombie_mov_1 = new TranslateTransition();
-        zombie_mov_1.setNode(Zombie1);
-        Zombie1.setFitWidth(220);
-        Zombie1.setFitWidth(220);
-        zombie_mov_1.setByX(-1000);
-        zombie_mov_1.setDuration(Duration.seconds(100));
-        zombie_mov_1.play();
-        TranslateTransition zombie_mov_2 = new TranslateTransition();
-        Zombie2.setFitWidth(220);
-        Zombie2.setFitWidth(220);
-        zombie_mov_2.setNode(Zombie2);
-        zombie_mov_2.setByX(-1000);
-        zombie_mov_2.setDuration(Duration.seconds(100));
-        zombie_mov_2.play();
-        Zombie1.translateXProperty().addListener(check_Zombie_Plant_Intersection);
-        */
-
         Zombie_Factory factory = new Zombie_Factory();
         Timeline zombie_mover = new Timeline(
                 new KeyFrame(Duration.seconds(0), e -> factory.create_zombie(Grid_Pane)),
@@ -220,7 +220,6 @@ public class Main_Gameplay_Controller implements Initializable {
 
     public void All_Deselect(){
         //deselect all the plants , i.e set all seeds to normal
-
 
     }
 

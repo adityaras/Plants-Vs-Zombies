@@ -22,8 +22,8 @@ class Zombies implements Character
     private Double Health_pts;
     private Double Speed_pts;
     private TranslateTransition Zombie_Moves;
+    private Timeline eating;
     ImageView holder=new ImageView();
-    Timeline zt=new Timeline();
     static ArrayList<Zombies> All_Zombies = new ArrayList<>();
 
 
@@ -46,7 +46,7 @@ class Zombies implements Character
         Zombie_Moves.setNode(holder);
         Zombie_Moves.setDuration(Duration.seconds(Speed_pts));
         Zombie_Moves.setByX(-1000);
-
+        holder.translateXProperty().addListener(check_Zombie_Plant_Intersection);
         Zombie_Moves.play();
         /*zt.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(0), new KeyValue(holder.translateXProperty(),1000)),
@@ -55,14 +55,52 @@ class Zombies implements Character
         zt.play();*/
     }
 
+    private void eat_plant(Plant p){
+        eating=new Timeline(
+                new KeyFrame(Duration.millis(300),e-> {
+                    try {
+                        Plant.plant_got_hit(p,this.getAttack_pts());
+                        System.out.println("Plant Health - "+p.getHealth_pts());
+                    } catch (PlantDiedException ex) {
+                        System.out.println("Remove_this_Bitch__  "+ex.plant);
+
+                        System.out.println(ex.plant.getPlant_transitions_timeline());
+                        if(ex.plant.getPlant_transitions_timeline()!=null) ex.plant.getPlant_transitions_timeline().stop();
+
+                        ex.plant.getP_StackPane().getChildren().remove(p.getPlant_View());
+                        Plant.All_Plants.remove(ex.plant);
+                        Zombie_Moves.play();
+                        eating.stop();
+
+                    }catch (NullPointerException ne){
+                        Zombie_Moves.play();
+                    }
+                })
+        );
+
+        eating.setCycleCount(Timeline.INDEFINITE);
+        eating.play();
+        eating.setOnFinished(event -> {
+            Zombie_Moves.play();
+        });
+    }
+
 
     private final ChangeListener<Number> check_Zombie_Plant_Intersection = (ob, n, n1) -> {
-        for(Plant p: Plant.All_Plants) {
-            if(p==null) System.out.println("Pea is NUll");
-            if (this.getHolder().getBoundsInParent().intersects(p.getPlant_View().getParent().getBoundsInParent())) {
-                System.out.println("\n\n\nDETECTED ZOMBIE\n\n\nSTART EATING\n\n\n");
-                Zombie_Moves.pause();
+        try{
+            for(Plant p: Plant.All_Plants) {
+                if(p==null) System.out.println("Pea is NUll");
+                if (this.getHolder().getBoundsInParent().intersects(p.getPlant_View().getParent().getBoundsInParent())) {
+                    System.out.println("\n\n\nDETECTED ZOMBIE\n\n\nSTART EATING\n\n\n");
+                    System.out.println("Plant Health - "+p.getHealth_pts());
+                    Zombie_Moves.pause();
+                    eat_plant(p);
+                }
             }
+
+        }catch (NullPointerException e){
+            System.out.println("_____________________");
+            Zombie_Moves.play();
         }
     };
 
@@ -71,7 +109,7 @@ class Zombies implements Character
         Health_pts=100.0;
         def_pts=100.0;
         Speed_pts=40.0;
-        attack_pts=100.0;
+        attack_pts=5.0;
 
     }
 
@@ -92,7 +130,9 @@ class Zombies implements Character
     public Double getHealth_pts() { return Health_pts; }
     public void setHealth_pts(Double health_pts) { Health_pts = health_pts; }
 
-    public void setSpeed_pts(Double speed_pts) { Speed_pts = speed_pts;
+    public void setSpeed_pts(Double speed_pts) { Speed_pts = speed_pts; }
+    public Double getAttack_pts() {
+        return attack_pts;
     }
 }
 
