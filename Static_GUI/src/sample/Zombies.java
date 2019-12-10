@@ -59,19 +59,25 @@ class Zombies implements Character
         eating=new Timeline(
                 new KeyFrame(Duration.millis(300),e-> {
                     try {
+                        if(this.getHealth_pts()<=0) throw new ZombieKilledException(this);
                         Plant.plant_got_hit(p,this.getAttack_pts());
                         System.out.println("Plant Health - "+p.getHealth_pts());
                     } catch (PlantDiedException ex) {
-                        System.out.println("Remove_this_Bitch__  "+ex.plant);
+                        System.out.println("Plant Removed -  "+ex.plant);
 
                         System.out.println(ex.plant.getPlant_transitions_timeline());
                         if(ex.plant.getPlant_transitions_timeline()!=null) ex.plant.getPlant_transitions_timeline().stop();
 
                         ex.plant.getP_StackPane().getChildren().remove(p.getPlant_View());
                         Plant.All_Plants.remove(ex.plant);
+                        ex.plant=null;
+                        System.gc();
                         Zombie_Moves.play();
                         eating.stop();
 
+                    }catch (ZombieKilledException zd) {
+                        System.out.println("Eating stopped");
+                        eating.stop();
                     }catch (NullPointerException ne){
                         Zombie_Moves.play();
                     }

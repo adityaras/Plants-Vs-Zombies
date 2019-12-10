@@ -83,8 +83,6 @@ class Shooter_Plant extends Plant
     private Image bullet_Image;
     private ImageView Bullet_Holder;
     private static int Cost;
-    private final String name="Pea_Shooter";
-    private Double health_points;
 
     Shooter_Plant(int c, int r,StackPane putter){
         super(c,r);
@@ -160,8 +158,6 @@ class Token_Producing_Plant extends Plant
 {
     private static  int Cost=25;
     private final String name="Sunflower";
-    private Double health_points;
-    private Double Experience_points;
     private ImageView Sun_Token_Holder;
 
     Token_Producing_Plant(int column, int my_row,StackPane putter) {
@@ -173,14 +169,14 @@ class Token_Producing_Plant extends Plant
 
     @Override
     public void action(GridPane Grid_pane, int col, int row) {
-        Timeline Plant_transitions_timeline = new Timeline(
-                new KeyFrame(Duration.seconds(15), e -> {
+        plant_transitions_timeline = new Timeline(
+                new KeyFrame(Duration.seconds(5), e -> {
                     set_Sun_on_SunFlower(col,row);
                 })
         );
 
-        Plant_transitions_timeline.setCycleCount(Animation.INDEFINITE);
-        Plant_transitions_timeline.play();
+        plant_transitions_timeline.setCycleCount(Animation.INDEFINITE);
+        plant_transitions_timeline.play();
     }
 
     public void set_Sun_on_SunFlower(int c,int r) {
